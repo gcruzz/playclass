@@ -5,6 +5,8 @@ public class Parametros {
    //CATEGORIA
    public static final int tamCatgAncho = 120;
    public static final int tamCatgAlto = 100;
+   public static final boolean VERTICAL = true;
+   public static final boolean displayNombre = true;
    //OBJETOS
    public static final int limiteObjetos = 4;
    public static final int tamObjAncho = /*120;*/90;

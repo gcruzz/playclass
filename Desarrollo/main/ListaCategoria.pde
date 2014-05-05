@@ -45,12 +45,14 @@ public class ListaCategoria extends Elemento
           //HORIZONTAL
           if(!vertical)
           {
+            categorias.get(i).setMostrarNombre(Parametros.displayNombre);
             categorias.get(i).ubicarXY(dirX,getY()+bordeY);
             dirX += (distanciaCategorias + Parametros.tamCatgAncho);
           }
           //VERTICAL
           else
           {
+            categorias.get(i).setMostrarNombre(Parametros.displayNombre);
             categorias.get(i).ubicarXY(getX()+bordeX,dirY);
             dirY += (distanciaCategorias + Parametros.tamCatgAlto);
           }

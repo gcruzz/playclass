@@ -12,6 +12,7 @@ public class Categoria extends Elemento
     
     public void cargarCategoria()
     {
+        sizeFigura(Parametros.tamCatgAncho, Parametros.tamCatgAlto);
         objetos = new ArrayList<Objeto>();
         
         for(int i=1; i <= Parametros.limiteObjetos; i++)
@@ -23,36 +24,34 @@ public class Categoria extends Elemento
                case Parametros.FIGURAS_GEOMETRICAS:
                   if(i==1)
                   {
-                    setFigura(loadImage("caja_1.png"));
-                    setNombre("FIGURAS GEOMETRICAS");
+                    setUrlFigura("caja_1.png");
+                    setNombre("FIGURAS GEOMÉTRICAS");
                   }
-                  obj=new Objeto(loadImage("fig_"+i+".png"));
+                  obj=new Objeto("fig_"+i+".png");
                   obj.setNombre("fig_"+i);
                   break;
                case Parametros.ANIMALES: 
                   if(i==1)
                   {
-                    setFigura(loadImage("caja_2.png"));
+                    setUrlFigura("caja_2.png");
                     setNombre("ANIMALES");
                   }
-                  obj=new Objeto(loadImage("animal_"+i+".png"));
+                  obj=new Objeto("animal_"+i+".png");
                   obj.setNombre("animal_"+i);
                   break;
                case Parametros.FRUTAS: 
                   if(i==1)
                   {
-                    setFigura(loadImage("caja_2.png"));
+                    setUrlFigura("caja_3.png");
                     setNombre("FRUTAS");
                   }
-                  obj=new Objeto(loadImage("fruta_"+i+".png"));
+                  obj=new Objeto("fruta_"+i+".png");
                   obj.setNombre("fruta_"+i);
                   break;   
            }
            
            objetos.add(obj);
         }
-        
-        getFigura().resize(Parametros.tamCatgAncho, Parametros.tamCatgAlto);
     }
     
     public ArrayList<Objeto> getObjetos()

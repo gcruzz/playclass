@@ -12,8 +12,8 @@ public class Pizarra extends Elemento
     {
         objetosPizarra = new ArrayList<Objeto>();
         
-        setFigura(loadImage("pizarra.png"));
-        getFigura().resize(Parametros.tamPizAncho, Parametros.tamPizAlto);
+        setUrlFigura("pizarra.png");
+        sizeFigura(Parametros.tamPizAncho, Parametros.tamPizAlto);
         
         this.categoria = categoria;
         //valores para la margen de la pizarra y a partir de ella se posiciona el obj

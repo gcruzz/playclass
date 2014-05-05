@@ -7,27 +7,9 @@ void setup() {
   size(Parametros.ANCHO, Parametros.ALTO);
   control = new AnimationControl(0);
   
-  /*MenuScreen menu = new MenuScreen("menu.mp3", 1.8f);
-  
-  ChapterMenuScreen chapter = new ChapterMenuScreen("chapterMenu.mp3", 1.8f);*/
-  
   SeleccionCatScreen seleccionCat = new SeleccionCatScreen(this);
-  /*Chapter1Part2Screen chapter1p2 = new Chapter1Part2Screen("musicCap1part3.mp3", 1.8f, "voiceCap1part2.mp3");
-  Chapter1Part3Screen chapter1p3 = new Chapter1Part3Screen("musicCap1part3.mp3", 1.8f, "voiceCap1part3.mp3");
-  Chapter2Part1Screen chapter2p1 = new Chapter2Part1Screen("musicCap1part1.mp3", 1.8f, "voiceCap2part1.mp3");
-  Chapter2Part2Screen chapter2p2 = new Chapter2Part2Screen("musicCap1part1.mp3", 1.8f, "voiceCap2part2.mp3");
-  Chapter3Part1Screen chapter3p1 = new Chapter3Part1Screen("musicCap1part3.mp3", 1.8f, "voiceCap3part1.mp3");*/
   
-  /*control.insertScreen(splash);
-  control.insertScreen(splash2);
-  control.insertScreen(menu);
-  control.insertScreen(chapter);*/
   control.insertScreen(seleccionCat);
-  /*control.insertScreen(chapter1p2);
-  control.insertScreen(chapter1p3);
-  control.insertScreen(chapter2p1);
-  control.insertScreen(chapter2p2);
-  control.insertScreen(chapter3p1);*/
 }
 
 void draw() {
