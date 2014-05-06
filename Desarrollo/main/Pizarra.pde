@@ -17,10 +17,10 @@ public class Pizarra extends Elemento
         
         this.categoria = categoria;
         //valores para la margen de la pizarra y a partir de ella se posiciona el obj
-        bordeX=20;
+        bordeX=58;
         bordeY=20;
         //Valor para mantener la distancia al agregar objetos a la pizarra
-        distanciaObjetos = 30;
+        distanciaObjetos = 75;
         //variable para mantener la sumatoria de x al agregar objetos a la pizarra
         dirX = getX()+ bordeX;
     }

@@ -2,6 +2,7 @@ public class Elemento
 {
    private String nombre;
    private PImage figura;
+   private PImage figuraEfecto;
    private int ubicacionX;
    private int ubicacionY;
    private AudioPlayer soundPlayer;
@@ -11,9 +12,9 @@ public class Elemento
    private boolean efectoSelect;
    private int figAncho;
    private int figAlto;
-   boolean sono;
-   private PFont font;
+   private boolean sono;
    private boolean mostrarNombre;
+   private boolean modoBoton;
     
     public Elemento()
     {
@@ -34,6 +35,12 @@ public class Elemento
     {
         this.nombre = nombre;
         this.figura = figura;
+    }
+    
+    public Elemento(String nombre, boolean modoBoton)
+    {
+        this.nombre = nombre;
+        this.modoBoton = modoBoton;
     }
     
     public void setMostrarNombre(boolean mostrarNombre)
@@ -60,6 +67,11 @@ public class Elemento
     {
         this.urlFigura = urlFigura;
         this.figura = loadImage(this.urlFigura);
+    }
+    
+    public void setFiguraEfecto(PImage figuraEfecto)
+    {
+        this.figuraEfecto = figuraEfecto;
     }
     
     public PImage getFigura()
@@ -148,8 +160,15 @@ public class Elemento
         }
         else
         {
-          //valores para dar el efecto de agrandado
-           image(figura, ubicacionX-3, ubicacionY-3, figAncho + 20, figAlto + 20); 
+            if(!modoBoton)
+            {          
+             //valores para dar el efecto de agrandado
+             image(figura, ubicacionX-3, ubicacionY-3, figAncho + 20, figAlto + 20);
+            }
+            else
+            {
+               image(figuraEfecto, ubicacionX, ubicacionY, figAncho, figAlto);  
+            } 
         }
       }
       
@@ -189,8 +208,10 @@ public class Elemento
          {
            efectoSelect =false;
          }
+        
         return true;
       } else {
+        
         if(efecto)
          {
             efectoSelect =false;
@@ -200,6 +221,7 @@ public class Elemento
          {
            efectoSelect =false;
          }
+        
         return false;
       } 
     }
@@ -208,7 +230,7 @@ public class Elemento
      
       if (mouseX >= x && mouseX <= x+width && 
           mouseY >= y && mouseY <= y+height) {
-        
+            
          if(efecto)
          {
            efectoSelect =true;
@@ -223,9 +245,11 @@ public class Elemento
          {
            efectoSelect =false;
          }
+        
         return true;
         
       } else {
+        
         sono = false;
         if(efecto)
          {
@@ -236,13 +260,18 @@ public class Elemento
          {
            efectoSelect =false;
          }
-         
+        
         return false;
       } 
     }
     
     public boolean isRastreado(){
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto,false); 
+    }
+    
+    public boolean isRastreado(boolean efecto){
+      //efecto de agrandado
+     return overRect(ubicacionX, ubicacionY, figAncho, figAlto, efecto); 
     }
     
     public boolean isRastreado(PApplet applet, boolean efecto){
@@ -268,7 +297,7 @@ public class Elemento
       }    
   }
   
-   public void sonidoEfecto(PApplet applet){
+  public void sonidoEfecto(PApplet applet){
       try
       {
         minim = new Minim(applet);
@@ -287,11 +316,18 @@ public class Elemento
     {
         if(nombre!=null && !nombre.toString().replaceAll(" +","").trim().equals(""))
         {
-          font = createFont("Arial Bold", 15);
+          PFont font = createFont("Comic Sans MS", 15);
           fill(0,0,0);
           textFont(font);
           textAlign(CENTER);
-          text(nombre, ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+          if(!modoBoton)
+          {
+            text(nombre, ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+          }
+          else
+          {
+            text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-3);
+          }   
         }
     }
   }

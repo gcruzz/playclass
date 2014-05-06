@@ -1,6 +1,7 @@
 public class AnimationControl {
   private int currentScreen;
   private ArrayList<Screen> screens;
+  private Categoria catgSeleccionada;
   
    public AnimationControl(){
     this(-1, new ArrayList<Screen>());
@@ -15,6 +16,14 @@ public class AnimationControl {
     this.screens = screens;
   }
  
+  public void setCatgSeleccionada(Categoria catgSeleccionada){
+    this.catgSeleccionada = catgSeleccionada;
+  }
+  
+  public Categoria getCatgSeleccionada(){
+    return catgSeleccionada;
+  }
+  
   public void setCurrentScreen(int currentScreen){
     this.currentScreen = currentScreen;
   }

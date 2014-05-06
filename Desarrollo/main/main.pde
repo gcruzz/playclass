@@ -8,8 +8,12 @@ void setup() {
   control = new AnimationControl(0);
   
   SeleccionCatScreen seleccionCat = new SeleccionCatScreen(this);
+  PizarraScreen pizarra = new PizarraScreen(this);
   
   control.insertScreen(seleccionCat);
+  control.insertScreen(pizarra);
+  
+  cursor(HAND);
 }
 
 void draw() {

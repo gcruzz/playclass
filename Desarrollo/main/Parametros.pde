@@ -1,10 +1,13 @@
 public class Parametros {
+   //BOTON
+   public static final int tamBtnAncho = 150;
+   public static final int tamBtnAlto = 50;
    //PIZARRA
-   public static final int tamPizAncho = 600;
-   public static final int tamPizAlto = 440;
+   public static final int tamPizAncho = 700;
+   public static final int tamPizAlto = 220;
    //CATEGORIA
-   public static final int tamCatgAncho = 120;
-   public static final int tamCatgAlto = 100;
+   public static final int tamCatgAncho = 170;
+   public static final int tamCatgAlto = 150;
    public static final boolean VERTICAL = true;
    public static final boolean displayNombre = true;
    //OBJETOS
@@ -17,5 +20,5 @@ public class Parametros {
    public static final int FRUTAS = 3; 
    //PANTALLA PRINCIPAL
    public static final int ANCHO = 1200;
-   public static final int ALTO = 680;
+   public static final int ALTO = 620;
 }

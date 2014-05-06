@@ -8,6 +8,8 @@ abstract class Screen{
     this.control = control;
   }
   
+  public Categoria seleccionada;
+  
    abstract void draw();
    abstract void drawImage();
    abstract void mousePressed();
