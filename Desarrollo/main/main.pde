@@ -24,6 +24,9 @@ void mousePressed() {
   control.clickOnCurrentScreem();
 }
 
+void keyReleased() {
+  control.keyReleasedCurrentScreem();
+}
 
 
 

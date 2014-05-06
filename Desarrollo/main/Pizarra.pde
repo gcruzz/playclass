@@ -95,4 +95,41 @@ public class Pizarra extends Elemento
     {
         return objetosPizarra;
     }
+    
+    public void renderizarPizarra()
+    {
+      if(objetosPizarra.size() > 0)
+      {
+          ubicar();
+          for(int i=0; i < objetosPizarra.size() ; i++)
+          {
+              objetosPizarra.get(i).ubicar();
+          }
+      } 
+    }
+    
+    public boolean validarNombresObjetos()
+    {
+      boolean valido = true;
+      if(objetosPizarra.size() > 0)
+      {
+          for(int i=0; i < objetosPizarra.size() ; i++)
+          {
+              if(objetosPizarra.get(i).getNombre()!=null && !objetosPizarra.get(i).getNombre().toString().replaceAll(" +","").trim().equals(""))
+              {
+                 valido = valido && true;
+              }
+              else
+              {
+                 valido = valido && false; 
+              }
+          }
+      }
+      else
+      {
+          valido = false;
+      } 
+      
+      return valido;
+    }
 }

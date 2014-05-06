@@ -28,7 +28,9 @@ public class Categoria extends Elemento
                     setNombre("FIGURAS GEOMÉTRICAS");
                   }
                   obj=new Objeto("fig_"+i+".png");
-                  obj.setNombre("fig_"+i);
+                  //obj.setNombre("fig_"+i);
+                  obj.setMostrarNombre(Parametros.displayNombreObj);
+                  obj.setEditarNombre(Parametros.editarNombreObj);
                   break;
                case Parametros.ANIMALES: 
                   if(i==1)
@@ -37,7 +39,9 @@ public class Categoria extends Elemento
                     setNombre("ANIMALES");
                   }
                   obj=new Objeto("animal_"+i+".png");
-                  obj.setNombre("animal_"+i);
+                  //obj.setNombre("animal_"+i);
+                  obj.setMostrarNombre(Parametros.displayNombreObj);
+                  obj.setEditarNombre(Parametros.editarNombreObj);
                   break;
                case Parametros.FRUTAS: 
                   if(i==1)
@@ -46,7 +50,9 @@ public class Categoria extends Elemento
                     setNombre("FRUTAS");
                   }
                   obj=new Objeto("fruta_"+i+".png");
-                  obj.setNombre("fruta_"+i);
+                  //obj.setNombre("fruta_"+i);
+                  obj.setMostrarNombre(Parametros.displayNombreObj);
+                  obj.setEditarNombre(Parametros.editarNombreObj);
                   break;   
            }
            

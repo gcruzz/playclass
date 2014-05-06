@@ -55,7 +55,7 @@ public class Elemento
     
     public String getNombre()
     {
-       return nombre.toUpperCase().trim(); 
+       return nombre != null ? nombre.toUpperCase().trim() : nombre;
     }
     
     public String getUrlFigura()

@@ -38,6 +38,9 @@ public class PizarraScreen extends Screen {
     
     botonCambCatg.ubicarXY(45,490);
     botonCambCatg.isRastreado(applet,true);
+    
+    //redibuja pizarra y objetos agregados para permitir la edicion del texto
+    pizarra.renderizarPizarra();
   }  
   
   void draw(){
@@ -48,8 +51,14 @@ public class PizarraScreen extends Screen {
     
     if(botonNext.isRastreado())
     {
-      botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
-      botonNext.ejecutarSonido();
+      if(pizarra.validarNombresObjetos()){
+        botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
+        botonNext.ejecutarSonido();
+      }
+      else
+      {
+         
+      }
     }
     
     if(botonCambCatg.isRastreado())
@@ -68,5 +77,15 @@ public class PizarraScreen extends Screen {
         botonSacar.ejecutarSonido();
         pizarra.agregarObjeto();
     }
+  }
+
+  void keyReleased() {
+      if(pizarra.getObjetosPizarra().size() > 0)
+      {
+        for(int i=0; i < pizarra.getObjetosPizarra().size() ; i++)
+        {
+          pizarra.getObjetosPizarra().get(i).editandoTexto();
+        }
+      }
   }  
 }
