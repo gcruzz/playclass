@@ -47,9 +47,8 @@ public class SeleccionCatScreen extends Screen {
          break;
       }
     }
-  } 
- 
-   void keyReleased() {
+  }
   
-  } 
+  void keyPressed() {
+  }
 }

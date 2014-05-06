@@ -49,6 +49,8 @@ public class PizarraScreen extends Screen {
   
   void mousePressed() {
     
+    pizarra.edicionNombreObj(applet);
+    
     if(botonNext.isRastreado())
     {
       if(pizarra.validarNombresObjetos()){
@@ -77,15 +79,15 @@ public class PizarraScreen extends Screen {
         botonSacar.ejecutarSonido();
         pizarra.agregarObjeto();
     }
-  }
-
-  void keyReleased() {
-      if(pizarra.getObjetosPizarra().size() > 0)
+  }  
+  
+  void keyPressed() {
+    if(pizarra.getObjetosPizarra().size() > 0)
       {
         for(int i=0; i < pizarra.getObjetosPizarra().size() ; i++)
         {
           pizarra.getObjetosPizarra().get(i).editandoTexto();
         }
       }
-  }  
+  }
 }

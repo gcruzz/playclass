@@ -62,10 +62,10 @@ public class AnimationControl {
     }    
   }
   
-  public void keyReleasedCurrentScreem(){
+  public void keyPressedCurrentScreem(){
     if(screens != null){
       if (screens.size() > 0 && currentScreen > -1){
-        screens.get(currentScreen).keyReleased();
+        screens.get(currentScreen).keyPressed();
       }
     }    
   }

@@ -96,6 +96,7 @@ public class Pizarra extends Elemento
         return objetosPizarra;
     }
     
+    //Metodo usaso en draw()
     public void renderizarPizarra()
     {
       if(objetosPizarra.size() > 0)
@@ -108,10 +109,31 @@ public class Pizarra extends Elemento
       } 
     }
     
+    //Metodo usaso en mousePressed()
+    public void edicionNombreObj(PApplet applet)
+    {
+      if(objetosPizarra.size() > 0)
+      {
+          for(int i=0; i < objetosPizarra.size() ; i++)
+          {
+              if(objetosPizarra.get(i).isRastreado())
+              {
+                  objetosPizarra.get(i).cargarSonido(applet,"edit2.wav");
+                  objetosPizarra.get(i).ejecutarSonido();
+                  objetosPizarra.get(i).setEditarNombre(!objetosPizarra.get(i).isEditarNombre());
+              }
+              else
+              {
+                objetosPizarra.get(i).setEditarNombre(false);
+              }
+          }
+      } 
+    }
+    
     public boolean validarNombresObjetos()
     {
       boolean valido = true;
-      if(objetosPizarra.size() > 0)
+      if(objetosPizarra.size() == Parametros.limiteObjetos)
       {
           for(int i=0; i < objetosPizarra.size() ; i++)
           {

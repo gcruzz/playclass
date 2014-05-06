@@ -15,7 +15,7 @@ public class Parametros {
    public static final int tamObjAncho = /*120;*/90;
    public static final int tamObjAlto = /*120;*/90;
    public static final boolean displayNombreObj = true;
-   public static final boolean editarNombreObj = true;
+   //public static final boolean editarNombreObj = true;
    //TIPOS DE CATEGORIA
    public static final int FIGURAS_GEOMETRICAS = 1;
    public static final int ANIMALES = 2;

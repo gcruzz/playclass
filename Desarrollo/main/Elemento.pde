@@ -15,6 +15,7 @@ public class Elemento
    private boolean sono;
    private boolean mostrarNombre;
    private boolean modoBoton;
+   private boolean editarNombre;
     
     public Elemento()
     {
@@ -55,7 +56,12 @@ public class Elemento
     
     public String getNombre()
     {
-       return nombre != null ? nombre.toUpperCase().trim() : nombre;
+       return nombre;
+    }
+    
+    public Minim getMinim()
+    {
+       return minim;
     }
     
     public String getUrlFigura()
@@ -107,7 +113,7 @@ public class Elemento
     
     public void setNombre(String nombre)
     {
-      this.nombre = nombre.toUpperCase().trim();
+      this.nombre = nombre;
     }
     
     public void setFigura(PImage figura)
@@ -322,13 +328,41 @@ public class Elemento
           textAlign(CENTER);
           if(!modoBoton)
           {
-            text(nombre, ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+            //estado no editable
+            if(!editarNombre)
+            {
+              text(nombre, ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+            }
+            //estado editable
+            else
+            {
+              nombre = nombre.toUpperCase();
+              text(nombre + (frameCount/10 % 2 == 0 ? "_" : ""), ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+            }
           }
           else
           {
             text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-3);
           }   
         }
+        else
+        {
+            if(editarNombre)
+            {
+              nombre = nombre.toUpperCase();
+              text(nombre.toUpperCase().trim() + (frameCount/10 % 2 == 0 ? "_" : ""), ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
+            }
+        }
     }
   }
+  
+    public void setEditarNombre(boolean editarNombre)
+    {
+      this.editarNombre = editarNombre;
+    }
+    
+    public boolean isEditarNombre()
+    {
+      return editarNombre;
+    }
 }
