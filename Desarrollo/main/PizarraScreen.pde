@@ -10,13 +10,18 @@ public class PizarraScreen extends Screen {
   boolean pizarraLlena;
   boolean cajaVacia;
   boolean cambioCategoria;
+  PFont fontStyle;
+  Elemento logo;
   
   public PizarraScreen(PApplet applet){
       this.applet = applet;
       bg = loadImage("fondo.png");
       bg.resize(Parametros.ANCHO, Parametros.ALTO);
       
-      botonNext=new Boton("Siguiente");
+      logo=new Elemento("logo2.png");
+      logo.sizeFigura(220, 50);
+      
+      botonNext=new Boton("Continuar");
       botonSacar=new Boton("Sacar");
       botonCambCatg=new Boton("Cambiar Categoria", 35);
   }
@@ -25,12 +30,18 @@ public class PizarraScreen extends Screen {
     if(!fondoDibujado)
     {
       background(bg);
+      logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
+      
       pizarra=new Pizarra(getAnimationControl().getCatgSeleccionada());
       pizarra.ubicarXY(245,90);
+      
+      //Dibuja el titulo
+      elementoTitulo();
+      
+      pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
+      
       fondoDibujado = true;
     }
-    
-    pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
     
     //botones
     if(!pizarra.pizarraLlena())
@@ -43,6 +54,9 @@ public class PizarraScreen extends Screen {
       if(!cajaVacia)
       {
         background(bg);
+        logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
+        elementoTitulo();
+        pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
         cajaVacia = true;
       }
     }
@@ -60,6 +74,9 @@ public class PizarraScreen extends Screen {
        if(!cambioCategoria)
        {
           background(bg);
+          logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
+          elementoTitulo();
+          pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
           cambioCategoria = true;
        } 
     }
@@ -118,6 +135,15 @@ public class PizarraScreen extends Screen {
       }
     }
   }  
+  
+  private void elementoTitulo()
+  {
+      fontStyle = createFont("Comic Sans MS", 25);
+      fill(0,0,0);
+      textFont(fontStyle);
+      textAlign(CENTER);
+      text("PIZARRA DE ELEMENTOS", Parametros.ANCHO / 2, 70);
+  }
   
   void keyPressed() {
     if(pizarra.getObjetosPizarra().size() > 0)
