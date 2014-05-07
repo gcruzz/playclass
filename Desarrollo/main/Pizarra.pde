@@ -133,7 +133,7 @@ public class Pizarra extends Elemento
     public boolean validarNombresObjetos()
     {
       boolean valido = true;
-      if(objetosPizarra.size() == Parametros.limiteObjetos)
+      if(pizarraLlena())
       {
           for(int i=0; i < objetosPizarra.size() ; i++)
           {
@@ -153,5 +153,10 @@ public class Pizarra extends Elemento
       } 
       
       return valido;
+    }
+    
+    public boolean pizarraLlena()
+    {
+      return (objetosPizarra.size() == Parametros.limiteObjetos);
     }
 }

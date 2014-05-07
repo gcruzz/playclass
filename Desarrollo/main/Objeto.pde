@@ -1,6 +1,7 @@
 public class Objeto extends Elemento
 {   
    private String tmpNombre;
+   private int limiteText = 14;
     
     public Objeto(PImage figura)
     {
@@ -39,8 +40,10 @@ public class Objeto extends Elemento
                 setNombre(tmpNombre);
                 break;
               default:
-                tmpNombre += key;
-                setNombre(tmpNombre);
+                if(tmpNombre.length() < limiteText){
+                    tmpNombre += key;
+                    setNombre(tmpNombre);
+                }
             }
           }
         } 

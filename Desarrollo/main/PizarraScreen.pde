@@ -2,11 +2,14 @@ public class PizarraScreen extends Screen {
   Pizarra pizarra;
   PImage bg;
   PApplet applet;
-  boolean unavez;
+  boolean fondoDibujado;
   Boton botonNext;
   Boton botonCambCatg;
   Boton botonSacar;
   int siguienteScreen = 0;
+  boolean pizarraLlena;
+  boolean cajaVacia;
+  boolean cambioCategoria;
   
   public PizarraScreen(PApplet applet){
       this.applet = applet;
@@ -19,25 +22,47 @@ public class PizarraScreen extends Screen {
   }
   
   void drawImage(){
-    if(!unavez)
+    if(!fondoDibujado)
     {
       background(bg);
       pizarra=new Pizarra(getAnimationControl().getCatgSeleccionada());
       pizarra.ubicarXY(245,90);
-      unavez = true;
+      fondoDibujado = true;
     }
     
     pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
     
     //botones
-    botonSacar.ubicarXY(pizarra.getCategoria().getX(),pizarra.getCategoria().getY() - Parametros.tamBtnAlto);
-    botonSacar.isRastreado(applet,true);
+    if(!pizarra.pizarraLlena())
+    {
+      botonSacar.ubicarXY(pizarra.getCategoria().getX(),pizarra.getCategoria().getY() - Parametros.tamBtnAlto);
+      botonSacar.isRastreado(applet,true);
+    }
+    else
+    {
+      if(!cajaVacia)
+      {
+        background(bg);
+        cajaVacia = true;
+      }
+    }
     
     botonNext.ubicarXY(1000,490);
     botonNext.isRastreado(applet,true);
     
-    botonCambCatg.ubicarXY(45,490);
-    botonCambCatg.isRastreado(applet,true);
+    if(pizarra.getObjetosPizarra().isEmpty())
+    {
+      botonCambCatg.ubicarXY(45,490);
+      botonCambCatg.isRastreado(applet,true);
+    }
+    else
+    {
+       if(!cambioCategoria)
+       {
+          background(bg);
+          cambioCategoria = true;
+       } 
+    }
     
     //redibuja pizarra y objetos agregados para permitir la edicion del texto
     pizarra.renderizarPizarra();
@@ -51,6 +76,7 @@ public class PizarraScreen extends Screen {
     
     pizarra.edicionNombreObj(applet);
     
+    //BOTON SIGUIENTE
     if(botonNext.isRastreado())
     {
       if(pizarra.validarNombresObjetos()){
@@ -59,25 +85,37 @@ public class PizarraScreen extends Screen {
       }
       else
       {
-         
+         //EN CONSTRUCCION ...
       }
     }
     
-    if(botonCambCatg.isRastreado())
+    //BOTON CAMBIAR CATEGORIA
+    if(pizarra.getObjetosPizarra().isEmpty())
     {
-      botonCambCatg.cargarSonido(applet,"seleccionarCategoria.wav");
-      botonCambCatg.ejecutarSonido();
-      
-      unavez = false;
-      background(255);
-      getAnimationControl().setCurrentScreen(siguienteScreen);
+      if(botonCambCatg.isRastreado())
+      {
+        botonCambCatg.cargarSonido(applet,"seleccionarCategoria.wav");
+        botonCambCatg.ejecutarSonido();
+        
+        fondoDibujado = false;
+        pizarraLlena = false;
+        cajaVacia = false;
+        cambioCategoria = false;
+        background(255);
+        getAnimationControl().setCurrentScreen(siguienteScreen);
+      }
     }
     
-    if(botonSacar.isRastreado())
+    //BOTON SACAR OBJETO DE LA CAJA
+    if(!pizarra.pizarraLlena())
     {
-        botonSacar.cargarSonido(applet,"seleccionarCategoria.wav");
-        botonSacar.ejecutarSonido();
-        pizarra.agregarObjeto();
+      if(botonSacar.isRastreado())
+      {
+          botonSacar.cargarSonido(applet,"seleccionarCategoria.wav");
+          botonSacar.ejecutarSonido();
+          pizarra.agregarObjeto();
+          
+      }
     }
   }  
   
