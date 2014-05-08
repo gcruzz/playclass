@@ -6,6 +6,7 @@ public class PizarraScreen extends Screen {
   Boton botonNext;
   Boton botonCambCatg;
   Boton botonSacar;
+  Boton botonSalir;
   int siguienteScreen = 0;
   boolean pizarraLlena;
   boolean cajaVacia;
@@ -21,6 +22,7 @@ public class PizarraScreen extends Screen {
       logo=new Elemento("logo2.png");
       logo.sizeFigura(220, 50);
       
+      botonSalir=new Boton("Salir");
       botonNext=new Boton("Continuar");
       botonSacar=new Boton("Sacar");
       botonCambCatg=new Boton("Cambiar Categoria", 35);
@@ -64,6 +66,9 @@ public class PizarraScreen extends Screen {
     botonNext.ubicarXY(1000,490);
     botonNext.isRastreado(applet,true);
     
+    botonSalir.ubicarXY(45,20);
+    botonSalir.isRastreado(applet,true);
+    
     if(pizarra.getObjetosPizarra().isEmpty())
     {
       botonCambCatg.ubicarXY(45,490);
@@ -90,19 +95,29 @@ public class PizarraScreen extends Screen {
   }
   
   void mousePressed() {
-    
+    //activa o desactiva la edicion del nombre del objeto al cual se le de click
     pizarra.edicionNombreObj(applet);
+    
+    //BOTON SALIR
+    if(botonSalir.isRastreado())
+    {
+      
+    }
     
     //BOTON SIGUIENTE
     if(botonNext.isRastreado())
     {
       if(pizarra.validarNombresObjetos()){
+        siguienteScreen = 2;
+        getAnimationControl().setCurrentScreen(siguienteScreen);
+        getAnimationControl().setPizarraLlena(pizarra);
+        
         botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
         botonNext.ejecutarSonido();
       }
       else
       {
-         //EN CONSTRUCCION ...
+         println("no hay nombres");
       }
     }
     
@@ -120,6 +135,7 @@ public class PizarraScreen extends Screen {
         cambioCategoria = false;
         background(255);
         getAnimationControl().setCurrentScreen(siguienteScreen);
+        getAnimationControl().setCatgSeleccionada(null);
       }
     }
     

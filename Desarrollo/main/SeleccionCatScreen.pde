@@ -6,6 +6,7 @@ public class SeleccionCatScreen extends Screen {
   int siguienteScreen = 1;
   PFont font;
   Elemento logo;
+  Boton botonSalir;
   
   public SeleccionCatScreen(PApplet applet){
       this.applet = applet;
@@ -14,6 +15,8 @@ public class SeleccionCatScreen extends Screen {
       bg.resize(Parametros.ANCHO, Parametros.ALTO);
       logo=new Elemento("logo2.png");
       logo.sizeFigura(220, 50);
+      
+      botonSalir=new Boton("Salir");
   }
   
   void drawImage(){
@@ -31,6 +34,9 @@ public class SeleccionCatScreen extends Screen {
     listaCategorias.getCategorias().get(0).isRastreado(applet,true);
     listaCategorias.getCategorias().get(1).isRastreado(applet,true);
     listaCategorias.getCategorias().get(2).isRastreado(applet,true);
+    
+    botonSalir.ubicarXY(45,20);
+    botonSalir.isRastreado(applet,true);
   }  
   
   void draw(){

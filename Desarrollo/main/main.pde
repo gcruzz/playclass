@@ -9,9 +9,11 @@ void setup() {
   
   SeleccionCatScreen seleccionCat = new SeleccionCatScreen(this);
   PizarraScreen pizarra = new PizarraScreen(this);
+  CuestionarioScreen cuestionario = new CuestionarioScreen(this);
   
   control.insertScreen(seleccionCat);
   control.insertScreen(pizarra);
+  control.insertScreen(cuestionario);
   
   cursor(HAND);
 }

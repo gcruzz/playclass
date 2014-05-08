@@ -1,7 +1,7 @@
 public class Objeto extends Elemento
 {   
    private String tmpNombre;
-   private int limiteText = 14;
+   private final int limiteText = 14;
     
     public Objeto(PImage figura)
     {

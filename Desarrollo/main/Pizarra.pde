@@ -44,6 +44,11 @@ public class Pizarra extends Elemento
       dirX = getX()+ bordeX;
     }
     
+    public void sumarBordeY(int valor)
+    {
+        bordeY += valor;
+    }
+    
     public void setCategoria(Categoria categoria)
     {
       this.categoria = categoria;
@@ -104,6 +109,19 @@ public class Pizarra extends Elemento
           ubicar();
           for(int i=0; i < objetosPizarra.size() ; i++)
           {
+              objetosPizarra.get(i).ubicar();
+          }
+      } 
+    }
+    
+    public void renderizarPizarra(int bordeY)
+    {
+      if(objetosPizarra.size() > 0)
+      {
+          ubicar();
+          for(int i=0; i < objetosPizarra.size() ; i++)
+          {
+              objetosPizarra.get(i).setY(getY() + bordeY);
               objetosPizarra.get(i).ubicar();
           }
       } 

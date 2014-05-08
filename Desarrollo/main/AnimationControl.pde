@@ -2,6 +2,7 @@ public class AnimationControl {
   private int currentScreen;
   private ArrayList<Screen> screens;
   private Categoria catgSeleccionada;
+  private Pizarra pizarraLlena;
   
    public AnimationControl(){
     this(-1, new ArrayList<Screen>());
@@ -22,6 +23,14 @@ public class AnimationControl {
   
   public Categoria getCatgSeleccionada(){
     return catgSeleccionada;
+  }
+  
+  public void setPizarraLlena(Pizarra pizarraLlena){
+    this.pizarraLlena = pizarraLlena;
+  }
+  
+  public Pizarra getPizarraLlena(){
+    return pizarraLlena;
   }
   
   public void setCurrentScreen(int currentScreen){
