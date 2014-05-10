@@ -15,6 +15,15 @@ public class Boton extends Elemento
         setMostrarNombre(true);
         setUrlFigura("boton_2.png");
         setFiguraEfecto(loadImage("boton_1.png"));
-        sizeFigura(Parametros.tamBtnAncho + masAncho, Parametros.tamBtnAlto);
+        sizeFigura(Parametros.tamBtnAncho + (masAncho), Parametros.tamBtnAlto);
+    }
+    
+    public Boton(String nombre, int masAncho, int masAlto)
+    {
+        super(nombre,true);
+        setMostrarNombre(true);
+        setUrlFigura("boton_2.png");
+        setFiguraEfecto(loadImage("boton_1.png"));
+        sizeFigura(Parametros.tamBtnAncho + (masAncho), Parametros.tamBtnAlto + (masAlto));
     }
 }

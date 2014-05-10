@@ -12,6 +12,7 @@ public class Cinta extends Elemento
    private int incorrectas;
    private int cant;
    private Elemento elemento;
+   private ArrayList<Elemento> elementos;
     
     public Cinta(PApplet applet)
     {
@@ -26,6 +27,8 @@ public class Cinta extends Elemento
         distanciaNotas = 30;
         //variable para mantener la sumatoria de x al agregar notas a la cinta
         dirX = getX()+ bordeX;
+        //lista de elementos notas
+        elementos=new ArrayList<Elemento>();
     }
     
     @Override
@@ -34,6 +37,15 @@ public class Cinta extends Elemento
       setX(x);
       setY(y);
       ubicar();
+      //reacomoda x para la rerencia al agregar objetos
+      dirX = getX()+ bordeX;
+    }
+    
+    @Override
+    public void setXY(int x,int y)
+    {
+      setX(x);
+      setY(y);
       //reacomoda x para la rerencia al agregar objetos
       dirX = getX()+ bordeX;
     }
@@ -75,8 +87,15 @@ public class Cinta extends Elemento
           elemento.ubicarXY( dirX, getY()+bordeY);
           dirX += (distanciaNotas + elemento.getFigAncho());
           
+          elementos.add(elemento);
+          
           ejecutarSonido();
         }
+    }
+    
+    public ArrayList<Elemento> getElementos()
+    {
+      return elementos;
     }
     
     public boolean aprobo(){
@@ -88,8 +107,31 @@ public class Cinta extends Elemento
        return correctas; 
     }
     
+    public void resetVal()
+    {
+      correctas = 0;
+      incorrectas = 0;
+      elementos=new ArrayList<Elemento>();
+    }
+    
+    public void renderizar()
+    {
+       ubicar();
+       if(elementos.size() > 0)
+       {
+          for(int i=0;i<elementos.size();i++)
+          {
+             elementos.get(i).ubicar();
+          }     
+       } 
+    }
     public int getInCorrectas()
     {
        return incorrectas; 
+    }
+    
+    public boolean estaLlena()
+    {
+       return ((correctas+incorrectas) == limiteCinta);
     }
 }

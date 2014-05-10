@@ -1,0 +1,46 @@
+Preguntas Categoria FIGURAS GEOMETRICAS
+
+Describe lo que ves....
+
+Pregunta 1. Los elementos que se muestran en la pizarra se pueden clasificar como:
+
+a. Conjunto de números reales
+b. Conjunto de animales
+c. Varios tipos de tirángulos
+d. Conjunto de figuras geometricas (Correcta)
+
+Pregunta 2. La(s) caracteristica(s) en común que tienen los elementos que se muestran en la pizarra son:
+
+a. La forma que tienen los elementos
+b. La forma en que estan colocados los puntos blancos
+c. Los puntos blancos (Correcta)
+d. El color que tienen los elementos
+
+Pregunta 3. La cantidad de elementos que se muestran en la pizarra es:
+
+a. 4 (correcta)
+b. 1
+c. 0
+d. 3 
+
+Pregunta 4. Una caracteristica de los elementos que se muestran en la pizarra es:
+
+a. Son figuras con todos sus lados cerrados (correcta)
+b. Son figuras con exactamente 3 vértices
+c. Son figuras que no tienen vértices
+d. Son figuras que no tienen nada en común
+
+Pregunta 5. En cuanto al color, los tonos que rellenan los elementos son:
+
+a. Amarillo
+b. Naranjay Amarillo
+c. Verde, Violeta, Naranja y Amarillo (correcta)
+d. Amarillo, Rojo, Verde
+
+Pregunta 6. Los elementos que se muestran en la pizarra contienen un patron de puntos cuya cantidad en común es:
+
+a. 0
+b. 3 (correcta)
+c. 2
+d. 4
+

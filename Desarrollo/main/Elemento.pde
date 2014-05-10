@@ -16,6 +16,7 @@ public class Elemento
    private boolean mostrarNombre;
    private boolean modoBoton;
    private boolean editarNombre;
+   private boolean activo;
     
     public Elemento()
     {
@@ -42,6 +43,16 @@ public class Elemento
     {
         this.nombre = nombre;
         this.modoBoton = modoBoton;
+    }
+    
+    public void setActivo(boolean activo)
+    {
+      this.activo = activo;
+    }
+    
+    public boolean isActivo()
+    {
+      return activo;
     }
     
     public void setMostrarNombre(boolean mostrarNombre)
@@ -196,9 +207,25 @@ public class Elemento
        ubicacionX = x; 
     }
     
+    public void setXY(int x,int y)
+    {
+       ubicacionX = x;
+       ubicacionY = y; 
+    }
+    
     public void setY(int y)
     {
        ubicacionY = y; 
+    }
+    
+    boolean overCirculo(int x, int y, int diameter) {
+      float disX = x - mouseX;
+      float disY = y - mouseY;
+      if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
+        return true;
+      } else {
+        return false;
+      }
     }
     
     public boolean overRect(int x, int y, int width, int height, boolean efecto)  {
@@ -283,6 +310,11 @@ public class Elemento
     public boolean isRastreado(PApplet applet, boolean efecto){
       //efecto de agrandado
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto, applet, efecto); 
+    }
+    
+    public boolean isCirculoRastreado()
+    {
+       return overCirculo(ubicacionX,ubicacionY, figAncho);
     }
     
     public void cargarSonido(PApplet applet, String urlSonido)

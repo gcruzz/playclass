@@ -3,7 +3,7 @@ public class SeleccionCatScreen extends Screen {
   ListaCategoria listaCategorias;
   PImage bg;
   PApplet applet;
-  int siguienteScreen = 1;
+  int siguienteScreen = 2;
   PFont font;
   Elemento logo;
   Boton botonSalir;
@@ -25,11 +25,7 @@ public class SeleccionCatScreen extends Screen {
     logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
     
     //titulo
-    font = createFont("Comic Sans MS", 25);
-    fill(0,0,0);
-    textFont(font);
-    textAlign(CENTER);
-    text("SELECCIONAR CATEGORIA", Parametros.ANCHO / 2, 70);
+    elementoTitulo();
     
     listaCategorias.getCategorias().get(0).isRastreado(applet,true);
     listaCategorias.getCategorias().get(1).isRastreado(applet,true);
@@ -38,6 +34,15 @@ public class SeleccionCatScreen extends Screen {
     botonSalir.ubicarXY(45,20);
     botonSalir.isRastreado(applet,true);
   }  
+  
+  private void elementoTitulo()
+  {
+    font = createFont("Comic Sans MS", 25);
+    fill(0,0,0);
+    textFont(font);
+    textAlign(CENTER);
+    text("SELECCIONAR CATEGORIA", Parametros.ANCHO / 2, 70);
+  }
   
   void draw(){
     this.drawImage();

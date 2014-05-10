@@ -7,7 +7,7 @@ public class PizarraScreen extends Screen {
   Boton botonCambCatg;
   Boton botonSacar;
   Boton botonSalir;
-  int siguienteScreen = 0;
+  int siguienteScreen = 1;
   boolean pizarraLlena;
   boolean cajaVacia;
   boolean cambioCategoria;
@@ -63,8 +63,24 @@ public class PizarraScreen extends Screen {
       }
     }
     
-    botonNext.ubicarXY(1000,490);
-    botonNext.isRastreado(applet,true);
+    if(pizarra.validarNombresObjetos())
+    {
+      botonNext.ubicarXY(1000,490);
+      botonNext.isRastreado(applet,true);
+    }
+    else
+    {
+      //preuba ....
+       background(bg);
+       logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
+       elementoTitulo();
+       pizarra.ubicar();
+       if(!pizarra.pizarraLlena())
+       {
+         botonSacar.ubicar();
+       }
+       pizarra.getCategoria().ubicarXY((Parametros.ANCHO - Parametros.tamCatgAncho)/2,400);
+    }
     
     botonSalir.ubicarXY(45,20);
     botonSalir.isRastreado(applet,true);
@@ -105,19 +121,16 @@ public class PizarraScreen extends Screen {
     }
     
     //BOTON SIGUIENTE
-    if(botonNext.isRastreado())
+    if(pizarra.validarNombresObjetos())
     {
-      if(pizarra.validarNombresObjetos()){
-        siguienteScreen = 2;
+      if(botonNext.isRastreado())
+      {
+        siguienteScreen = 3;
         getAnimationControl().setCurrentScreen(siguienteScreen);
         getAnimationControl().setPizarraLlena(pizarra);
         
         botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
         botonNext.ejecutarSonido();
-      }
-      else
-      {
-         println("no hay nombres");
       }
     }
     
