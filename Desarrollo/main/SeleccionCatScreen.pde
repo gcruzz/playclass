@@ -62,6 +62,14 @@ public class SeleccionCatScreen extends Screen {
          break;
       }
     }
+    
+    //BOTON SALIR
+    if(botonSalir.isRastreado())
+    {
+      getAnimationControl().setCurrentScreen(0);
+      botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
+      botonSalir.ejecutarSonido();
+    }
   }
   
   void keyPressed() {

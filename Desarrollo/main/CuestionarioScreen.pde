@@ -104,7 +104,10 @@ public class CuestionarioScreen extends Screen {
     
     for(int i=0; i<pregActual.getOpciones().size();i++)
     {
-        if(pregActual.getOpciones().get(i).isCirculoRastreado() && !cinta.estaLlena())
+      int tamn = pregActual.getOpciones().get(i).getNombre().trim().length();
+      tamn = tamn == 1 ? 2 : tamn;
+      
+        if( ( pregActual.getOpciones().get(i).isCirculoRastreado() || pregActual.getOpciones().get(i).isRastreado(0,-8,tamn *10,-3) ) && !cinta.estaLlena())
         {
           pregActual.activarRadio(pregActual.getOpciones().get(i));
           pregActual.getOpciones().get(i).cargarSonido(applet,"radioselect.wav");
@@ -117,7 +120,10 @@ public class CuestionarioScreen extends Screen {
     //BOTON SALIR
     if(botonSalir.isRastreado())
     {
-      
+      botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
+      botonSalir.ejecutarSonido();
+      clearExit();
+      getAnimationControl().setCurrentScreen(0);
     }
     
     //BOTON SIGUIENTE
@@ -125,7 +131,8 @@ public class CuestionarioScreen extends Screen {
     {
       if(botonNext.isRastreado())
       {
-       
+          botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
+          botonNext.ejecutarSonido();
       }
     }
     
@@ -147,6 +154,15 @@ public class CuestionarioScreen extends Screen {
         }
       }
     }
+  }
+  
+  void clearExit()
+  {
+    pizarra = null;
+    respuesta="";
+    fondoDibujado = false; 
+    siguientePreg = false;
+    cinta.resetVal();
   }
   
   void keyPressed() {

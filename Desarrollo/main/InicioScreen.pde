@@ -28,6 +28,8 @@ public class InicioScreen extends Screen {
     
      if(botonIniciar.isRastreado())
       {
+          botonIniciar.cargarSonido(applet,"seleccionarCategoria.wav");
+          botonIniciar.ejecutarSonido();
           getAnimationControl().setCurrentScreen(siguienteScreen);
       }
   }

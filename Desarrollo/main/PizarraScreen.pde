@@ -8,7 +8,6 @@ public class PizarraScreen extends Screen {
   Boton botonSacar;
   Boton botonSalir;
   int siguienteScreen = 1;
-  boolean pizarraLlena;
   boolean cajaVacia;
   boolean cambioCategoria;
   PFont fontStyle;
@@ -70,7 +69,6 @@ public class PizarraScreen extends Screen {
     }
     else
     {
-      //preuba ....
        background(bg);
        logo.ubicarXY(Parametros.ANCHO - 270, Parametros.ALTO - 60);
        elementoTitulo();
@@ -110,6 +108,13 @@ public class PizarraScreen extends Screen {
     this.drawImage();
   }
   
+  void clearExit()
+  {
+    fondoDibujado = false;
+    cajaVacia = false;
+    cambioCategoria = false;
+  }
+  
   void mousePressed() {
     //activa o desactiva la edicion del nombre del objeto al cual se le de click
     pizarra.edicionNombreObj(applet);
@@ -117,7 +122,10 @@ public class PizarraScreen extends Screen {
     //BOTON SALIR
     if(botonSalir.isRastreado())
     {
-      
+      clearExit();
+      getAnimationControl().setCurrentScreen(0);
+      botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
+      botonSalir.ejecutarSonido();
     }
     
     //BOTON SIGUIENTE
@@ -125,6 +133,7 @@ public class PizarraScreen extends Screen {
     {
       if(botonNext.isRastreado())
       {
+        clearExit();
         siguienteScreen = 3;
         getAnimationControl().setCurrentScreen(siguienteScreen);
         getAnimationControl().setPizarraLlena(pizarra);
@@ -141,11 +150,7 @@ public class PizarraScreen extends Screen {
       {
         botonCambCatg.cargarSonido(applet,"seleccionarCategoria.wav");
         botonCambCatg.ejecutarSonido();
-        
-        fondoDibujado = false;
-        pizarraLlena = false;
-        cajaVacia = false;
-        cambioCategoria = false;
+        clearExit();
         background(255);
         getAnimationControl().setCurrentScreen(siguienteScreen);
         getAnimationControl().setCatgSeleccionada(null);

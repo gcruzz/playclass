@@ -6,6 +6,7 @@ public class Elemento
    private int ubicacionX;
    private int ubicacionY;
    private AudioPlayer soundPlayer;
+   private AudioPlayer soundEfecto;
    private Minim minim;
    private String urlSonido;
    private String urlFigura;
@@ -82,8 +83,11 @@ public class Elemento
     
     public void setUrlFigura(String urlFigura)
     {
-        this.urlFigura = urlFigura;
-        this.figura = loadImage(this.urlFigura);
+       if(figura == null)
+       {
+          this.urlFigura = urlFigura;
+          this.figura = loadImage(this.urlFigura);
+       }
     }
     
     public void setFiguraEfecto(PImage figuraEfecto)
@@ -302,6 +306,10 @@ public class Elemento
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto,false); 
     }
     
+    public boolean isRastreado(int mx,int my,int masAncho, int masAlto){
+     return overRect(ubicacionX + (mx), ubicacionY + (my), figAncho + (masAncho), figAlto + (masAlto),false); 
+    }
+    
     public boolean isRastreado(boolean efecto){
       //efecto de agrandado
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto, efecto); 
@@ -319,7 +327,10 @@ public class Elemento
     
     public void cargarSonido(PApplet applet, String urlSonido)
     {
-        minim = new Minim(applet);
+        if(minim == null)
+        {
+          minim = new Minim(applet);
+        }
         this.urlSonido = urlSonido;
     }
     
@@ -328,6 +339,11 @@ public class Elemento
       {
         soundPlayer = minim.loadFile(urlSonido);
         soundPlayer.play();
+        soundPlayer.rewind();
+        if(!soundPlayer.isPlaying())
+        {
+          soundPlayer.close();
+        }
       }
       catch(Exception e)
       {
@@ -335,12 +351,24 @@ public class Elemento
       }    
   }
   
-  public void sonidoEfecto(PApplet applet){
+  public void sonidoEfecto(PApplet applet)
+  {
       try
       {
-        minim = new Minim(applet);
-        soundPlayer = minim.loadFile("click.mp3");
-        soundPlayer.play();
+        if(minim == null)
+        {
+          minim = new Minim(applet);
+        }
+        if(soundEfecto == null)
+        {
+          soundEfecto = minim.loadFile("click.mp3");
+        }
+        soundEfecto.play();
+        soundEfecto.rewind();
+        if(!soundEfecto.isPlaying())
+        {
+          soundEfecto.close();
+        }
       }
       catch(Exception e)
       {

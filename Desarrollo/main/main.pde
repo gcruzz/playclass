@@ -3,8 +3,8 @@ import ddf.minim.*;
 AnimationControl control;
 
 void setup() {
-  frame.setTitle("PlayClass");
   size(Parametros.ANCHO, Parametros.ALTO);
+  frame.setTitle("PlayClass");
   control = new AnimationControl(0);
   
   InicioScreen inicio = new InicioScreen(this);

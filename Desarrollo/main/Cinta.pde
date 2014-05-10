@@ -109,8 +109,10 @@ public class Cinta extends Elemento
     
     public void resetVal()
     {
+      cant = 0;
       correctas = 0;
       incorrectas = 0;
+      dirX = getX()+ bordeX;
       elementos=new ArrayList<Elemento>();
     }
     
