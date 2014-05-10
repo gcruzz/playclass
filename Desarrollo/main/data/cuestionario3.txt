@@ -1,6 +1,6 @@
-Los elementos que se muestran en la pizarra se pueden clasificar como: \Conjunto de números reales\Conjunto de animales\Varios tipos de tirángulos\*Conjunto de figuras geometricas
-La(s) caracteristica(s) en común que tienen los elementos que se muestran en la pizarra son: \La forma que tienen los elementos\La forma en que estan colocados los puntos blancos\*Los puntos blancos\El color que tienen los elementos
-La cantidad de elementos que se muestran en la pizarra es: \*4\1\0\3
-Una caracteristica de los elementos que se muestran en la pizarra es: \*Son figuras con todos sus lados cerrados\Son figuras con exactamente 3 vértices\Son figuras que no tienen vértices\Son figuras que no tienen nada en común
-En cuanto al color, los tonos que rellenan los elementos son: \Amarillo\Naranja y Amarillo\*Verde, Violeta, Naranja y Amarillo\Amarillo, Rojo, Verde
-Los elementos que se muestran en la pizarra contienen un patron de puntos cuya cantidad en común es: \0\*3\2\4
+Los elementos que se muestan en la pizarra corresponden a: \Animales vertebrados\celulas eucariotas\*Frutas\Insumos de oficina
+Una caracteristica comun a todos los elementos que se muestran en la pizarra es: \*Todos los elementos estan inscritos en una circunferencia\La forma es comun para todos\Todas las frutas son acidas\Ninguna de las frutas se da en Colombia
+La cantidad de elementos que hay en la categoria seleccionada es: \1\*4\3\5
+Los elementos que se ven en la pizarra, en cuanto a sabor son: \Acidos\Amargos\Salados\*Dulces
+Los elementos que se muestran en la pizarra son principalmente aptos para preparar: \Sopas\*Postres\Cazuelas\Arroz
+Los colores de los elementos que se muestran en la pizarra son: \Verde, Rojo, Violeta, Blanco\Verde, Blanco, Azul, Rojo\Amarillo, Verde, Rojo, Crema\*Amarillo, Verde, Rojo, Blanco

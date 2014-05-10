@@ -1,6 +1,6 @@
-Los elementos que se muestran en la pizarra se pueden clasificar como: \Conjunto de números reales\Conjunto de animales\Varios tipos de tirángulos\*Conjunto de figuras geometricas
-La(s) caracteristica(s) en común que tienen los elementos que se muestran en la pizarra son: \La forma que tienen los elementos\La forma en que estan colocados los puntos blancos\*Los puntos blancos\El color que tienen los elementos
-La cantidad de elementos que se muestran en la pizarra es: \*4\1\0\3
-Una caracteristica de los elementos que se muestran en la pizarra es: \*Son figuras con todos sus lados cerrados\Son figuras con exactamente 3 vértices\Son figuras que no tienen vértices\Son figuras que no tienen nada en común
-En cuanto al color, los tonos que rellenan los elementos son: \Amarillo\Naranja y Amarillo\*Verde, Violeta, Naranja y Amarillo\Amarillo, Rojo, Verde
-Los elementos que se muestran en la pizarra contienen un patron de puntos cuya cantidad en común es: \0\*3\2\4
+Los elementos que se muestran en la pizarra pertenecen a: \Reino vegetal\Reino monera\Reino fungi\*Reino Animal
+De los elementos que se muestran en la pizarra existen: \3 invertebrados y 1 vertebrado\4 vertebrados\1 insecto, 1 invertebrado y 2 vertebrados\*2 invertebrados, 2 vertebrados
+Una caracteristica comun a todos los elementos que se muestran en la pizarra son: \*Todos tienen patas\Todos vuelan\Son animales acuaticos\No tienen nada en comun
+Los clores que tienen los elementos de la pizarra son: \Naranjas y blancos\*Rojo, negro, blanco, rosa, naranja\Naranja, blanco, crema, cafe\Rojo, negro, amarillo, gris
+De los animales que se  ven en la pizarra: \*2 vuelan, 2 son terrestres\Todos son terrestres\1 vuela, 2 son terrestres y 1 se arrastra\Todos nadan
+La cantidad de  elementos que se ven en la pizarra es: \*4\3\5\1
