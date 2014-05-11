@@ -7,7 +7,6 @@ public class PizarraScreen extends Screen {
   Boton botonCambCatg;
   Boton botonSacar;
   Boton botonSalir;
-  int siguienteScreen = 1;
   boolean cajaVacia;
   boolean cambioCategoria;
   PFont fontStyle;
@@ -122,8 +121,9 @@ public class PizarraScreen extends Screen {
     //BOTON SALIR
     if(botonSalir.isRastreado())
     {
+      background(255);
       clearExit();
-      getAnimationControl().setCurrentScreen(0);
+      getAnimationControl().setCurrentScreen(2);
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
     }
@@ -133,9 +133,9 @@ public class PizarraScreen extends Screen {
     {
       if(botonNext.isRastreado())
       {
+        background(255);
         clearExit();
-        siguienteScreen = 3;
-        getAnimationControl().setCurrentScreen(siguienteScreen);
+        getAnimationControl().setCurrentScreen(5);
         getAnimationControl().setPizarraLlena(pizarra);
         
         botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
@@ -152,7 +152,7 @@ public class PizarraScreen extends Screen {
         botonCambCatg.ejecutarSonido();
         clearExit();
         background(255);
-        getAnimationControl().setCurrentScreen(siguienteScreen);
+        getAnimationControl().setCurrentScreen(3);
         getAnimationControl().setCatgSeleccionada(null);
       }
     }

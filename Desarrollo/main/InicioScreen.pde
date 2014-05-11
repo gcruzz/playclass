@@ -2,7 +2,6 @@ public class InicioScreen extends Screen {
   
   PImage bg;
   PApplet applet;
-  int siguienteScreen = 1;
   Boton botonIniciar;
   
   public InicioScreen(PApplet applet){
@@ -30,7 +29,7 @@ public class InicioScreen extends Screen {
       {
           botonIniciar.cargarSonido(applet,"seleccionarCategoria.wav");
           botonIniciar.ejecutarSonido();
-          getAnimationControl().setCurrentScreen(siguienteScreen);
+          getAnimationControl().setCurrentScreen(3);
       }
   }
   

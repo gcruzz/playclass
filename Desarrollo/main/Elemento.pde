@@ -71,6 +71,11 @@ public class Elemento
        return nombre;
     }
     
+    public void setMinim(Minim minim)
+    {
+       this.minim=minim;
+    }
+    
     public Minim getMinim()
     {
        return minim;

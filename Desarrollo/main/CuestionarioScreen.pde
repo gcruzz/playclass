@@ -2,7 +2,6 @@ public class CuestionarioScreen extends Screen {
   
   PImage bg;
   PApplet applet;
-  int siguienteScreen = 4;
   PFont font;
   Elemento logo;
   Cinta cinta;
@@ -123,7 +122,7 @@ public class CuestionarioScreen extends Screen {
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
       clearExit();
-      getAnimationControl().setCurrentScreen(0);
+      getAnimationControl().setCurrentScreen(2);
     }
     
     //BOTON SIGUIENTE
@@ -147,6 +146,12 @@ public class CuestionarioScreen extends Screen {
           siguientePreg = false;
           cuestionario.nextPregunta();
           respuesta="";
+          
+          if(cinta.estaLlena())
+          {
+            cinta.cargarSonido(applet, "juegoCompleto.wav");
+            cinta.ejecutarSonido();
+          }
         }
         else
         {
@@ -155,7 +160,7 @@ public class CuestionarioScreen extends Screen {
       }
     }
   }
-  
+
   void clearExit()
   {
     pizarra = null;

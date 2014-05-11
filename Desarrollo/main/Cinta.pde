@@ -73,7 +73,14 @@ public class Cinta extends Elemento
             elemento.sizeFigura(30, 30);
             
             correctas++;
-            cargarSonido(applet, "RtaCorrecta2.wav");
+            if(!estaLlena())
+            {
+              cargarSonido(applet, "RtaCorrecta2.wav");
+            }
+            else
+            {
+              //cargarSonido(applet, "juegoCompleto.wav");
+            }
           }
           else
           {
@@ -81,7 +88,14 @@ public class Cinta extends Elemento
             elemento.sizeFigura(30, 30);
             
             incorrectas++;
-            cargarSonido(applet, "RtaIncorrecta.wav");
+            if(!estaLlena())
+            {
+              cargarSonido(applet, "RtaIncorrecta.wav");
+            }
+            else
+            {
+              
+            }
           }
           
           elemento.ubicarXY( dirX, getY()+bordeY);

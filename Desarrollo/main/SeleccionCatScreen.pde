@@ -3,7 +3,6 @@ public class SeleccionCatScreen extends Screen {
   ListaCategoria listaCategorias;
   PImage bg;
   PApplet applet;
-  int siguienteScreen = 2;
   PFont font;
   Elemento logo;
   Boton botonSalir;
@@ -54,7 +53,7 @@ public class SeleccionCatScreen extends Screen {
       if(listaCategorias.getCategorias().get(i).isRastreado())
       {
          background(255);
-         getAnimationControl().setCurrentScreen(siguienteScreen);
+         getAnimationControl().setCurrentScreen(4);
          getAnimationControl().setCatgSeleccionada(listaCategorias.getCategorias().get(i));
          listaCategorias.getCategorias().get(i).cargarSonido(applet,"seleccionarCategoria.wav");
          listaCategorias.getCategorias().get(i).ejecutarSonido();
@@ -66,7 +65,8 @@ public class SeleccionCatScreen extends Screen {
     //BOTON SALIR
     if(botonSalir.isRastreado())
     {
-      getAnimationControl().setCurrentScreen(0);
+      background(255);
+      getAnimationControl().setCurrentScreen(2);
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
     }
