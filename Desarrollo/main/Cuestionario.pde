@@ -22,7 +22,8 @@ public class Cuestionario
          for(int i=0; i < lecturaTxt.length; i++)
          {
             String datos[] = lecturaTxt[i].split("\\\\");
-            Pregunta pregunta=new Pregunta(datos[0]);
+            
+            Pregunta pregunta=new Pregunta(i==0 ? datos[0].replaceAll("^.", "") : datos[0]);
             
             for(int j=1; j < datos.length; j++)
             {

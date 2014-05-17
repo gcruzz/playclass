@@ -37,12 +37,12 @@ public class Objeto extends Elemento
                 break;
               case BACKSPACE:
                 tmpNombre = tmpNombre.substring(0,max(0,tmpNombre.length()-1));
-                setNombre(tmpNombre);
+                setNombre(tmpNombre.replaceAll(" +","").trim());
                 break;
               default:
                 if(tmpNombre.length() < limiteText){
                     tmpNombre += key;
-                    setNombre(tmpNombre);
+                    setNombre(tmpNombre.replaceAll(" +","").trim());
                 }
             }
           }

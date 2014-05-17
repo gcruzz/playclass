@@ -54,10 +54,10 @@ public class SeleccionCatScreen extends Screen {
       {
          background(255);
          getAnimationControl().setCurrentScreen(4);
+         listaCategorias.getCategorias().get(i).clearSacados();
          getAnimationControl().setCatgSeleccionada(listaCategorias.getCategorias().get(i));
          listaCategorias.getCategorias().get(i).cargarSonido(applet,"seleccionarCategoria.wav");
          listaCategorias.getCategorias().get(i).ejecutarSonido();
-         listaCategorias=new ListaCategoria();
          break;
       }
     }

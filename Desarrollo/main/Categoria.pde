@@ -1,6 +1,7 @@
 public class Categoria extends Elemento
 {
     private ArrayList<Objeto> objetos;
+    private ArrayList<Objeto> listSacados;
     private int tipoCategoria;
     private Objeto sacado;
     
@@ -14,6 +15,7 @@ public class Categoria extends Elemento
     {
         sizeFigura(Parametros.tamCatgAncho, Parametros.tamCatgAlto);
         objetos = new ArrayList<Objeto>();
+        listSacados = new ArrayList<Objeto>();
         
         for(int i=1; i <= Parametros.limiteObjetos; i++)
         {
@@ -68,10 +70,23 @@ public class Categoria extends Elemento
           int indice = int(random(objetos.size()));
           retorno = objetos.get(indice);
           sacado = retorno;
+          //para el uso de clear al cambiar de pantallas
+          objetos.get(indice).setNombre("");
+          listSacados.add(objetos.get(indice));
+          
           objetos.remove(indice);
         }
         
         return retorno;
+    }
+    
+    public void clearSacados()
+    {
+      if(objetos.isEmpty())
+      {
+        objetos = listSacados;
+        listSacados = new ArrayList<Objeto>();
+      }
     }
     
     public int getTipoCategoria()
