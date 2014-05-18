@@ -335,6 +335,45 @@ public class Elemento
       } 
     }
     
+    public boolean overRect(int x, int y, int width, int height,PApplet applet, boolean efecto, boolean quitarefecto)  {
+     
+      if (mouseX >= x && mouseX <= x+width && 
+          mouseY >= y && mouseY <= y+height) {
+            
+         if(efecto)
+         {
+           efectoSelect = quitarefecto;
+           ubicar();
+           if(!sono)
+           {
+             sonidoEfecto(applet);
+             sono = true;
+           }
+         }
+         else
+         {
+           efectoSelect =false;
+         }
+        
+        return true;
+        
+      } else {
+        
+        sono = false;
+        if(efecto)
+         {
+            efectoSelect =false;
+            ubicar();
+         }
+         else
+         {
+           efectoSelect =false;
+         }
+        
+        return false;
+      } 
+    }
+    
     public boolean isRastreado(){
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto,false); 
     }
@@ -351,6 +390,11 @@ public class Elemento
     public boolean isRastreado(PApplet applet, boolean efecto){
       //efecto de agrandado
      return overRect(ubicacionX, ubicacionY, figAncho, figAlto, applet, efecto); 
+    }
+    
+    public boolean isRastreadoSound(PApplet applet, boolean efecto){
+      //efecto de agrandado
+     return overRect(ubicacionX, ubicacionY, figAncho, figAlto, applet, efecto, false); 
     }
     
     public boolean isCirculoRastreado()

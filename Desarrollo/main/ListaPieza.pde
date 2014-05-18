@@ -52,8 +52,11 @@ public class ListaPieza extends Elemento
     {
         for(int i=0; i < piezas.size(); i++)
         {
-            piezas.get(i).ubicarXY(dirX,getY()+bordeY+saltoVal);
-            
+           if(!piezas.get(i).isArrastrar())
+           {         
+              piezas.get(i).ubicarXY(dirX,getY()+bordeY+saltoVal);
+           }
+           
             if(i >= (salto-1))
             {
               dirX = getX()+ bordeX;
@@ -97,5 +100,24 @@ public class ListaPieza extends Elemento
     public ArrayList<Pieza> getPiezas()
     {
         return piezas;
+    }
+    
+    public boolean validarUnicaSeleccion()
+    {
+      boolean valido = true;
+      
+      for(int i=0; i < piezas.size() ; i++)
+      {
+          if(piezas.get(i).isArrastrar() == false)
+          {
+              valido = valido && true;
+          }
+          else
+          {
+              valido = valido && false; 
+          }
+       }
+      
+      return valido;
     }
 }

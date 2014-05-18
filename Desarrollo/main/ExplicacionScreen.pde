@@ -8,6 +8,8 @@ public class ExplicacionScreen extends Screen {
   Diagrama  diagrama;
   Pieza pieza;
   ListaPieza tableroPiezas;
+  //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAGY DROG
+  boolean sonido = true;
   
   public ExplicacionScreen(PApplet applet){
       this.applet = applet;
@@ -29,7 +31,20 @@ public class ExplicacionScreen extends Screen {
   void drawImage(){
     moverTodo();
     
-    //pieza.ubicarXY(pieza.get_X()+( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO ) ,pieza.get_Y());
+    //EFECTO NEGRILLA PIEZAS -----------------------------------
+    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    {
+      if(tableroPiezas.getPiezas().get(i).isRastreadoSound(applet,sonido))
+      {
+        for(int j=0; j < 10; j++)
+        {
+           tableroPiezas.getPiezas().get(i).ubicar();
+        }
+
+        break;
+      }
+    }
+    //--------------------------------------------------------
     
     for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
@@ -75,7 +90,7 @@ public class ExplicacionScreen extends Screen {
   {
     for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
-      if(tableroPiezas.getPiezas().get(i).isRastreado())
+      if(tableroPiezas.getPiezas().get(i).isRastreado() && tableroPiezas.validarUnicaSeleccion())
       {
         tableroPiezas.getPiezas().get(i).setArrastrar(true);
         break;
@@ -84,6 +99,9 @@ public class ExplicacionScreen extends Screen {
   }
   
   void mousePressed() { 
+    
+    sonido = false;
+    
     //BOTON SALIR
     if(botonSalir.isRastreado())
     {
@@ -91,6 +109,16 @@ public class ExplicacionScreen extends Screen {
       getAnimationControl().setCurrentScreen(2);
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
+    }
+    
+    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    {
+      if(tableroPiezas.getPiezas().get(i).isRastreado())
+      {
+        tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
+        tableroPiezas.getPiezas().get(i).ejecutarSonido();
+        break;
+      }
     }
   }
   
@@ -103,5 +131,7 @@ public class ExplicacionScreen extends Screen {
     {
       tableroPiezas.getPiezas().get(i).setArrastrar(false);
     }
+    
+    sonido = true;
   }
 }
