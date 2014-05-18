@@ -6,10 +6,8 @@ public class ExplicacionScreen extends Screen {
   Elemento logo;
   Boton botonSalir;
   Diagrama  diagrama;
-  
   Pieza pieza;
-  int po;
-  ListaPieza listPie;
+  ListaPieza tableroPiezas;
   
   public ExplicacionScreen(PApplet applet){
       this.applet = applet;
@@ -25,60 +23,22 @@ public class ExplicacionScreen extends Screen {
       pieza=new Pieza("Sisarras","objeto1.png");
       pieza.set_XY(0,300);
       
-      listPie=new ListaPieza();
+      tableroPiezas=new ListaPieza();
   }
   
   void drawImage(){
-    //moverTodo();
+    moverTodo();
     
     //pieza.ubicarXY(pieza.get_X()+( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO ) ,pieza.get_Y());
     
-    diagrama.ubicarXY((Parametros.ANCHO/2),68);
-    
-    /*if(po == 0)
+    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
-       moverTodo();*/
-       listPie.ubicarXY(20,200);
-       po++;
-    //}
-    /*
-    //PIEZA 1
-    pieza.ubicarXY(diagrama.getX() + 153 , diagrama.getY() + 19);
-    
-    //PIEZA 2
-    pieza.ubicarXY(diagrama.getX() + 20 , diagrama.getY() + 152);
-
-    //PIEZA 3
-    pieza.ubicarXY(diagrama.getX() + 20 + 89 , diagrama.getY() + 152);    
-    
-    //PIEZA 4
-    pieza.ubicarXY(diagrama.getX() + 20 + 178 , diagrama.getY() + 152);
-    
-    //PIEZA 5
-    pieza.ubicarXY(diagrama.getX() + 20 + 267 , diagrama.getY() + 152);
-    
-    //PIEZA 6
-    pieza.ubicarXY(diagrama.getX() - 2 , diagrama.getY() + 275);
-    
-    //PIEZA 7
-    pieza.ubicarXY(diagrama.getX() - 2 + 100 , diagrama.getY() + 275);
-    
-    //PIEZA 8
-    pieza.ubicarXY(diagrama.getX() - 2 + 200 , diagrama.getY() + 275);
-    
-    //PIEZA 9
-    pieza.ubicarXY(diagrama.getX() - 2 + 295 , diagrama.getY() + 275);
-    
-    //PIEZA 10
-    pieza.ubicarXY(diagrama.getX() + 48, diagrama.getY() + 369);
-    
-    //PIEZA 11
-    pieza.ubicarXY(diagrama.getX() + 48 + 184, diagrama.getY() + 369);*/
-    
-    if(pieza.isArrastrado())
-    {
+      if(tableroPiezas.getPiezas().get(i).isArrastrado())
+      {
         moverTodo();
-        pieza.ubicarMvto();
+        tableroPiezas.getPiezas().get(i).ubicarMvto();
+        break;
+      }
     }
   }  
   
@@ -92,6 +52,10 @@ public class ExplicacionScreen extends Screen {
         
     botonSalir.ubicarXY(45,20);
     botonSalir.isRastreado(applet,true);
+    
+    //cargar tablero y mapa conceptual
+    diagrama.ubicarXY((Parametros.ANCHO/2),68);
+    tableroPiezas.ubicarXY(( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO ),93);
   }
   
   private void elementoTitulo()
@@ -109,9 +73,13 @@ public class ExplicacionScreen extends Screen {
 
   void mouseDragged () 
   {
-    if(pieza.isRastreado())
+    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
-      pieza.setArrastrar(true);
+      if(tableroPiezas.getPiezas().get(i).isRastreado())
+      {
+        tableroPiezas.getPiezas().get(i).setArrastrar(true);
+        break;
+      }
     }
   }
   
@@ -130,6 +98,10 @@ public class ExplicacionScreen extends Screen {
   }
   
   void mouseReleased() {
-    pieza.setArrastrar(false);
+    
+    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    {
+      tableroPiezas.getPiezas().get(i).setArrastrar(false);
+    }
   }
 }

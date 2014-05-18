@@ -1,3 +1,5 @@
+import java.util.Collections;
+
 public class ListaPieza extends Elemento
 {
     private ArrayList<Pieza> piezas;
@@ -29,6 +31,8 @@ public class ListaPieza extends Elemento
         piezas.add(new Pieza("Sisarras","atributo4.png"));
         piezas.add(new Pieza("Sisarras","atributo5.png"));
         piezas.add(new Pieza("Sisarras","atributo6.png"));
+        
+        Collections.shuffle(piezas);
 
         //guarda la cantidad a sumar en caso de salto
         saltoVal = 0;
@@ -46,7 +50,6 @@ public class ListaPieza extends Elemento
     
     private void dibujarPiezas()
     {
-        println(piezas.size());
         for(int i=0; i < piezas.size(); i++)
         {
             piezas.get(i).ubicarXY(dirX,getY()+bordeY+saltoVal);
@@ -71,6 +74,8 @@ public class ListaPieza extends Elemento
       setY(y);
       ubicar();
 
+      saltoVal = 0;
+      salto = 3;
       dirX = getX()+ bordeX;
       
       dibujarPiezas();
@@ -81,7 +86,9 @@ public class ListaPieza extends Elemento
     {
       setX(x);
       ubicar();
-      //reacomoda x
+      
+      saltoVal = 0;
+      salto = 3;
       dirX = getX()+ bordeX;
       
       dibujarPiezas();
