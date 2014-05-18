@@ -35,4 +35,10 @@ public class InicioScreen extends Screen {
   
   void keyPressed() {
   }
+  
+  void mouseDragged() {
+  }
+  
+  void mouseReleased() {
+  }
 }

@@ -188,4 +188,10 @@ public class PizarraScreen extends Screen {
         }
       }
   }
+  
+  void mouseDragged() {
+  }
+  
+  void mouseReleased() {
+  }
 }

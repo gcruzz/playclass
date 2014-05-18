@@ -1,4 +1,10 @@
 public class Parametros {
+  //DIAGRAMA
+   public static final int tamDgrAncho = 380;
+   public static final int tamDgrAlto = 450;
+  //PIEZA
+   public static final int tamPzAncho = 90;
+   public static final int tamPzAlto = 84;
    //BOTON
    public static final int tamBtnAncho = 150;
    public static final int tamBtnAlto = 50;

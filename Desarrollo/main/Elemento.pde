@@ -18,6 +18,8 @@ public class Elemento
    private boolean modoBoton;
    private boolean editarNombre;
    private boolean activo;
+   private int _x;
+   private int _y;
     
     public Elemento()
     {
@@ -199,6 +201,32 @@ public class Elemento
       }
       
       displayNombre();
+    }
+    
+    public int get_Y()
+    {
+       return _y; 
+    }
+    
+    public int get_X()
+    {
+       return _x; 
+    }
+    
+    public void set_X(int x)
+    {
+       _x = x; 
+    }
+    
+    public void set_Y(int y)
+    {
+       _y = y; 
+    }
+    
+    public void set_XY(int x, int y)
+    {
+       _x = x; 
+       _y = y; 
     }
     
     public int getX()

@@ -74,4 +74,10 @@ public class SeleccionCatScreen extends Screen {
   
   void keyPressed() {
   }
+  
+  void mouseDragged() {
+  }
+  
+  void mouseReleased() {
+  }
 }

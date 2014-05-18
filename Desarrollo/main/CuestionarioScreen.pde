@@ -130,6 +130,7 @@ public class CuestionarioScreen extends Screen {
     {
       if(botonNext.isRastreado())
       {
+          getAnimationControl().setCurrentScreen(6);
           botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
           botonNext.ejecutarSonido();
       }
@@ -171,5 +172,11 @@ public class CuestionarioScreen extends Screen {
   }
   
   void keyPressed() {
+  }
+  
+  void mouseDragged() {
+  }
+  
+  void mouseReleased() {
   }
 }

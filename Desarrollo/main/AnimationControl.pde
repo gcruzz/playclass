@@ -78,4 +78,20 @@ public class AnimationControl {
       }
     }    
   }
+  
+  public void mouseDraggedCurrentScreem(){
+    if(screens != null){
+      if (screens.size() > 0 && currentScreen > -1){
+        screens.get(currentScreen).mouseDragged();
+      }
+    }    
+  }
+  
+  public void mouseReleasedCurrentScreem(){
+    if(screens != null){
+      if (screens.size() > 0 && currentScreen > -1){
+        screens.get(currentScreen).mouseReleased();
+      }
+    }    
+  }
 }

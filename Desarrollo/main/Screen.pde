@@ -14,4 +14,6 @@ abstract class Screen{
    abstract void drawImage();
    abstract void mousePressed();
    abstract void keyPressed();
+   abstract void mouseDragged();
+   abstract void mouseReleased();
 }

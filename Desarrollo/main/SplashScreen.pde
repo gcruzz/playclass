@@ -110,4 +110,10 @@ public class SplashScreen extends Screen{
   
   void keyPressed() {
   }
+  
+  void mouseDragged() {
+  }
+  
+  void mouseReleased() {
+  }
 }
