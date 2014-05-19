@@ -7,7 +7,7 @@ public class ExplicacionScreen extends Screen {
   Boton botonSalir;
   Diagrama  diagrama;
   ListaPieza tableroPiezas;
-  //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAGY DROG
+  //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAG Y DROG
   boolean sonido = true;
   
   public ExplicacionScreen(PApplet applet){
@@ -91,6 +91,23 @@ public class ExplicacionScreen extends Screen {
       {
         tableroPiezas.getPiezas().get(i).setArrastrar(true);
         
+        //-_-
+        /*if(tableroPiezas.getPiezas().get(i).isRastreado()) 
+            {
+               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
+               {
+                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
+                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
+                 {
+                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
+                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
+                   println("pieza no ... "+i);
+                   //break;
+                 }
+               }
+            }*/
+        
         break;
       }
     }
@@ -104,7 +121,7 @@ public class ExplicacionScreen extends Screen {
     if(botonSalir.isRastreado())
     {
       background(255);
-      getAnimationControl().setCurrentScreen(2);
+      //getAnimationControl().setCurrentScreen(2);
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
     }
@@ -115,6 +132,21 @@ public class ExplicacionScreen extends Screen {
       {
         tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
         tableroPiezas.getPiezas().get(i).ejecutarSonido();
+        
+        /*
+               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
+               {
+                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
+                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
+                 {
+                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
+                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
+                   println("pieza no ... "+i);
+                   //break;
+                 }
+               }*/
+            
         break;
       }
     }
@@ -127,24 +159,58 @@ public class ExplicacionScreen extends Screen {
     
     for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
+      /*if(tableroPiezas.getPiezas().get(i).isRastreado()) 
+            {
+               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
+               {
+                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
+                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
+                 {
+                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
+                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
+                   println("pieza no ... "+i);
+                   //break;
+                 }
+               }
+            }*/
+            
       tableroPiezas.getPiezas().get(i).setArrastrar(false);
       
+      
+            
       //RELACION DEL DROP -----------------
         for(int j=0; j < diagrama.getPiezas().size(); j++)
         {
-            //if(tableroPiezas.getPiezas().get(i).isRastreado(0,0,Parametros.tamPzAncho / 2, Parametros.tamPzAlto / 2)
-           if(tableroPiezas.getPiezas().get(i).isRastreado()
-             && diagrama.getPiezas().get(j).isRastreado(diagrama.getX(), diagrama.getY(),0,0) 
-          ) 
-//              && dist(  (diagrama.getX() + diagrama.getPiezas().get(j).getX())  ,  (diagrama.getY() + diagrama.getPiezas().get(j).getY())  ,mouseX + (diagrama.getPiezas().get(j).getFigAncho() / 2),mouseY + (diagrama.getPiezas().get(j).getFigAlto() / 2)) <= diagrama.getPiezas().get(j).getFigAncho() )
+            
+           if(tableroPiezas.getPiezas().get(i).isRastreado() && diagrama.getPiezas().get(j).isRastreado(diagrama.getX(), diagrama.getY(),0,0)
+           //&& diagrama.getPiezas().get(j).isActivo() == false)
+          && tableroPiezas.getPiezas().get(i).isPosicionado() == false) 
             {
               tableroPiezas.getPiezas().get(i).setXY((diagrama.getPiezas().get(j).getX() + diagrama.getX()), (diagrama.getPiezas().get(j).getY() + diagrama.getY()));
               tableroPiezas.getPiezas().get(i).setPosicionado(true);
+              diagrama.getPiezas().get(j).setActivo(true);
+              tableroPiezas.getPiezas().get(i).setPosicion(j);
               tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
               tableroPiezas.getPiezas().get(i).ejecutarSonido();
-              println("sisas "+(j+1));
+              println("pieza ... "+i);
               break;
-            }
+            }/*
+            else if(tableroPiezas.getPiezas().get(i).isRastreado()) 
+            {
+               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
+               {
+                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
+                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
+                 {
+                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
+                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
+                   println("pieza no ... "+i);
+                   //break;
+                 }
+               }
+            }*/
        }
        //---------------------------------------
     }

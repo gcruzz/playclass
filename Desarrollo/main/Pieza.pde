@@ -2,6 +2,7 @@ public class Pieza extends Elemento
 {   
     private boolean arrastrar;
     private boolean posicionado;
+    private int posicion = -1;
     
     public Pieza(String nombre, String urlPieza)
     {
@@ -20,6 +21,16 @@ public class Pieza extends Elemento
     public boolean isArrastrar()
     {
       return arrastrar;
+    }
+    
+    public void setPosicion(int posicion)
+    {
+      this.posicion = posicion;
+    }
+    
+    public int getPosicion()
+    {
+      return posicion;
     }
     
     public void setPosicionado(boolean posicionado)
