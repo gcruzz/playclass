@@ -52,9 +52,16 @@ public class ListaPieza extends Elemento
     {
         for(int i=0; i < piezas.size(); i++)
         {
-           if(!piezas.get(i).isArrastrar())
-           {         
-              piezas.get(i).ubicarXY(dirX,getY()+bordeY+saltoVal);
+           if(piezas.get(i).isPosicionado())
+           {
+              piezas.get(i).ubicar();
+           }
+           else
+           {
+               if(!piezas.get(i).isArrastrar())
+               {         
+                  piezas.get(i).ubicarXY(dirX,getY()+bordeY+saltoVal);
+               }  
            }
            
             if(i >= (salto-1))

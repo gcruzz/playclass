@@ -6,7 +6,6 @@ public class ExplicacionScreen extends Screen {
   Elemento logo;
   Boton botonSalir;
   Diagrama  diagrama;
-  Pieza pieza;
   ListaPieza tableroPiezas;
   //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAGY DROG
   boolean sonido = true;
@@ -21,9 +20,7 @@ public class ExplicacionScreen extends Screen {
       botonSalir=new Boton("Salir");
       
       diagrama = new Diagrama("diagramarelacion.png");
-      
-      pieza=new Pieza("Sisarras","objeto1.png");
-      pieza.set_XY(0,300);
+      diagrama.setXY((Parametros.ANCHO/2),68);
       
       tableroPiezas=new ListaPieza();
   }
@@ -69,7 +66,7 @@ public class ExplicacionScreen extends Screen {
     botonSalir.isRastreado(applet,true);
     
     //cargar tablero y mapa conceptual
-    diagrama.ubicarXY((Parametros.ANCHO/2),68);
+    diagrama.ubicar();
     tableroPiezas.ubicarXY(( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO ),93);
   }
   
@@ -93,6 +90,7 @@ public class ExplicacionScreen extends Screen {
       if(tableroPiezas.getPiezas().get(i).isRastreado() && tableroPiezas.validarUnicaSeleccion())
       {
         tableroPiezas.getPiezas().get(i).setArrastrar(true);
+        
         break;
       }
     }
@@ -130,6 +128,25 @@ public class ExplicacionScreen extends Screen {
     for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
     {
       tableroPiezas.getPiezas().get(i).setArrastrar(false);
+      
+      //RELACION DEL DROP -----------------
+        for(int j=0; j < diagrama.getPiezas().size(); j++)
+        {
+            //if(tableroPiezas.getPiezas().get(i).isRastreado(0,0,Parametros.tamPzAncho / 2, Parametros.tamPzAlto / 2)
+           if(tableroPiezas.getPiezas().get(i).isRastreado()
+             && diagrama.getPiezas().get(j).isRastreado(diagrama.getX(), diagrama.getY(),0,0) 
+          ) 
+//              && dist(  (diagrama.getX() + diagrama.getPiezas().get(j).getX())  ,  (diagrama.getY() + diagrama.getPiezas().get(j).getY())  ,mouseX + (diagrama.getPiezas().get(j).getFigAncho() / 2),mouseY + (diagrama.getPiezas().get(j).getFigAlto() / 2)) <= diagrama.getPiezas().get(j).getFigAncho() )
+            {
+              tableroPiezas.getPiezas().get(i).setXY((diagrama.getPiezas().get(j).getX() + diagrama.getX()), (diagrama.getPiezas().get(j).getY() + diagrama.getY()));
+              tableroPiezas.getPiezas().get(i).setPosicionado(true);
+              tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
+              tableroPiezas.getPiezas().get(i).ejecutarSonido();
+              println("sisas "+(j+1));
+              break;
+            }
+       }
+       //---------------------------------------
     }
     
     sonido = true;
