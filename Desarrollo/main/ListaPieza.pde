@@ -13,6 +13,7 @@ public class ListaPieza extends Elemento
     
     public ListaPieza()
     {
+        super();
         cargarLista();
     }
     
@@ -31,7 +32,8 @@ public class ListaPieza extends Elemento
         piezas.add(new Pieza("ATR 4","atributo4.png",Parametros.ATRIBUTO));
         piezas.add(new Pieza("ATR 5","atributo5.png",Parametros.ATRIBUTO));
         piezas.add(new Pieza("ATR 6","atributo6.png",Parametros.ATRIBUTO));
-        
+
+        //Barajea al azar        
         Collections.shuffle(piezas);
 
         //guarda la cantidad a sumar en caso de salto
@@ -145,5 +147,19 @@ public class ListaPieza extends Elemento
        }
       
       return valido;
+    }
+    
+    public void resetValListaPieza()
+    {
+       for(int i=0; i < piezas.size() ; i++)
+       {
+          piezas.get(i).setCorrecta(false);
+          piezas.get(i).setPosicionado(false);
+          piezas.get(i).setPosicion(-1);
+          piezas.get(i).setArrastrar(false);
+       }
+       
+       //Barajea al azar
+       Collections.shuffle(piezas);
     }
 }

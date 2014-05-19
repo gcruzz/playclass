@@ -14,12 +14,12 @@ void setup() {
   CuestionarioScreen cuestionario = new CuestionarioScreen(this);
   ExplicacionScreen explicacion = new ExplicacionScreen(this);
   
-  /*control.insertScreen(splash);
+  control.insertScreen(splash);
   control.insertScreen(splash2);
   control.insertScreen(inicio);
   control.insertScreen(seleccionCat);
   control.insertScreen(pizarra);
-  control.insertScreen(cuestionario);*/
+  control.insertScreen(cuestionario);
   control.insertScreen(explicacion);
   
   cursor(HAND);

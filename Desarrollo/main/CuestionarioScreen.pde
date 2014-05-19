@@ -132,6 +132,7 @@ public class CuestionarioScreen extends Screen {
       {
           getAnimationControl().setCurrentScreen(6);
           botonNext.cargarSonido(applet,"seleccionarCategoria.wav");
+          clearExit();
           botonNext.ejecutarSonido();
       }
     }

@@ -86,6 +86,7 @@ public class Categoria extends Elemento
       {
         objetos = listSacados;
         listSacados = new ArrayList<Objeto>();
+        Collections.shuffle(objetos);
       }
     }
     

@@ -104,4 +104,12 @@ public class Diagrama extends Elemento
       
       return valido;
     }
+    
+    public void resetValDiagrama()
+    {
+       for(int i=0; i < piezas.size() ; i++)
+       {
+          piezas.get(i).setActivo(false);
+       }
+    }
 }

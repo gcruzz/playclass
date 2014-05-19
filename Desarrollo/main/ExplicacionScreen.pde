@@ -130,6 +130,13 @@ public class ExplicacionScreen extends Screen {
     }
   }
   
+  void clearExit()
+  {
+    tableroPiezas.resetValListaPieza();
+    diagrama.resetValDiagrama();
+    termino = false;
+  }
+  
   void mousePressed() { 
     
     sonido = false;
@@ -138,9 +145,10 @@ public class ExplicacionScreen extends Screen {
     if(botonSalir.isRastreado())
     {
       background(255);
-      //getAnimationControl().setCurrentScreen(2);
+      getAnimationControl().setCurrentScreen(2);
       botonSalir.cargarSonido(applet,"seleccionarCategoria.wav");
       botonSalir.ejecutarSonido();
+      clearExit();
     }
     
     if(!diagrama.diagramaLleno())
