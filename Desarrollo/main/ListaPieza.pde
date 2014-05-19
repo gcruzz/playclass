@@ -20,17 +20,17 @@ public class ListaPieza extends Elemento
     {
         piezas = new ArrayList<Pieza>();
         
-        piezas.add(new Pieza("Sisarras","clase.png"));
-        piezas.add(new Pieza("Sisarras","objeto1.png"));
-        piezas.add(new Pieza("Sisarras","objeto2.png"));
-        piezas.add(new Pieza("Sisarras","objeto3.png"));
-        piezas.add(new Pieza("Sisarras","objeto4.png"));
-        piezas.add(new Pieza("Sisarras","atributo1.png"));
-        piezas.add(new Pieza("Sisarras","atributo2.png"));
-        piezas.add(new Pieza("Sisarras","atributo3.png"));
-        piezas.add(new Pieza("Sisarras","atributo4.png"));
-        piezas.add(new Pieza("Sisarras","atributo5.png"));
-        piezas.add(new Pieza("Sisarras","atributo6.png"));
+        piezas.add(new Pieza("CLASE","clase.png",Parametros.CLASE));
+        piezas.add(new Pieza("OBJ 1","objeto1.png",Parametros.OBJETO));
+        piezas.add(new Pieza("OBJ 2","objeto2.png",Parametros.OBJETO));
+        piezas.add(new Pieza("OBJ 3","objeto3.png",Parametros.OBJETO));
+        piezas.add(new Pieza("OBJ 4","objeto4.png",Parametros.OBJETO));
+        piezas.add(new Pieza("ATR 1","atributo1.png",Parametros.ATRIBUTO));
+        piezas.add(new Pieza("ATR 2","atributo2.png",Parametros.ATRIBUTO));
+        piezas.add(new Pieza("ATR 3","atributo3.png",Parametros.ATRIBUTO));
+        piezas.add(new Pieza("ATR 4","atributo4.png",Parametros.ATRIBUTO));
+        piezas.add(new Pieza("ATR 5","atributo5.png",Parametros.ATRIBUTO));
+        piezas.add(new Pieza("ATR 6","atributo6.png",Parametros.ATRIBUTO));
         
         Collections.shuffle(piezas);
 
@@ -116,6 +116,25 @@ public class ListaPieza extends Elemento
       for(int i=0; i < piezas.size() ; i++)
       {
           if(piezas.get(i).isArrastrar() == false)
+          {
+              valido = valido && true;
+          }
+          else
+          {
+              valido = valido && false; 
+          }
+       }
+      
+      return valido;
+    }
+    
+    public boolean validarCorrectas()
+    {
+      boolean valido = true;
+      
+      for(int i=0; i < piezas.size() ; i++)
+      {
+          if(piezas.get(i).isCorrecta() == true)
           {
               valido = valido && true;
           }

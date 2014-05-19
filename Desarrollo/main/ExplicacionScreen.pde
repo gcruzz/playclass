@@ -9,6 +9,7 @@ public class ExplicacionScreen extends Screen {
   ListaPieza tableroPiezas;
   //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAG Y DROG
   boolean sonido = true;
+  boolean termino;
   
   public ExplicacionScreen(PApplet applet){
       this.applet = applet;
@@ -28,28 +29,49 @@ public class ExplicacionScreen extends Screen {
   void drawImage(){
     moverTodo();
     
-    //EFECTO NEGRILLA PIEZAS -----------------------------------
-    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    if(!diagrama.diagramaLleno())
     {
-      if(tableroPiezas.getPiezas().get(i).isRastreadoSound(applet,sonido))
+      //EFECTO NEGRILLA PIEZAS -----------------------------------
+      for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
       {
-        for(int j=0; j < 10; j++)
+        if(tableroPiezas.getPiezas().get(i).isRastreadoSound(applet,sonido))
         {
-           tableroPiezas.getPiezas().get(i).ubicar();
+          for(int j=0; j < 10; j++)
+          {
+             tableroPiezas.getPiezas().get(i).ubicar();
+          }
+          break;
         }
-
-        break;
+      }
+      //--------------------------------------------------------
+      
+      for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+      {
+        if(tableroPiezas.getPiezas().get(i).isArrastrado())
+        {
+          moverTodo();
+          tableroPiezas.getPiezas().get(i).ubicarMvto();
+          break;
+        }
       }
     }
-    //--------------------------------------------------------
     
-    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    //SI TERMINO DE LLENAR EL DIAGRAMA
+    if(!termino)
     {
-      if(tableroPiezas.getPiezas().get(i).isArrastrado())
+      if(diagrama.diagramaLleno())
       {
-        moverTodo();
-        tableroPiezas.getPiezas().get(i).ubicarMvto();
-        break;
+         if(tableroPiezas.validarCorrectas())
+         {
+             println("UBICADAS CORRECTAMENTE");
+         }
+         else
+         {
+             println("ERROR EN EL DIAGRAMA");
+         }
+         diagrama.cargarSonido(applet, "juegoCompleto.wav");
+         diagrama.ejecutarSonido();
+         termino = true;
       }
     }
   }  
@@ -85,31 +107,26 @@ public class ExplicacionScreen extends Screen {
 
   void mouseDragged () 
   {
-    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    if(!diagrama.diagramaLleno())
     {
-      if(tableroPiezas.getPiezas().get(i).isRastreado() && tableroPiezas.validarUnicaSeleccion())
-      {
-        tableroPiezas.getPiezas().get(i).setArrastrar(true);
-        
-        //-_-
-        /*if(tableroPiezas.getPiezas().get(i).isRastreado()) 
+        for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+        {
+          if(tableroPiezas.getPiezas().get(i).isRastreado() && tableroPiezas.validarUnicaSeleccion())
+          {
+            tableroPiezas.getPiezas().get(i).setArrastrar(true);
+    
+            //LIMPIA LA POSICION YA QUE SE ESTA MOVIENDO ------------------------
+            tableroPiezas.getPiezas().get(i).setPosicionado(false);
+            tableroPiezas.getPiezas().get(i).setCorrecta(false);
+            if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
             {
-               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
-               {
-                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
-                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
-                 {
-                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
-                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
-                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
-                   println("pieza no ... "+i);
-                   //break;
-                 }
-               }
-            }*/
-        
-        break;
-      }
+              diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+            }
+            tableroPiezas.getPiezas().get(i).setPosicion(-1);
+            //-------------------------------------------------------
+            break;
+          }
+        }
     }
   }
   
@@ -126,30 +143,19 @@ public class ExplicacionScreen extends Screen {
       botonSalir.ejecutarSonido();
     }
     
-    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    if(!diagrama.diagramaLleno())
     {
-      if(tableroPiezas.getPiezas().get(i).isRastreado())
+      for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
       {
-        tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
-        tableroPiezas.getPiezas().get(i).ejecutarSonido();
-        
-        /*
-               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
-               {
-                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
-                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
-                 {
-                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
-                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
-                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
-                   println("pieza no ... "+i);
-                   //break;
-                 }
-               }*/
-            
-        break;
+        if(tableroPiezas.getPiezas().get(i).isRastreado())
+        {
+          tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
+          tableroPiezas.getPiezas().get(i).ejecutarSonido();
+          break;
+        }
       }
     }
+    
   }
   
   void keyPressed() {
@@ -157,62 +163,58 @@ public class ExplicacionScreen extends Screen {
   
   void mouseReleased() {
     
-    for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+    if(!diagrama.diagramaLleno())
     {
-      /*if(tableroPiezas.getPiezas().get(i).isRastreado()) 
-            {
-               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
-               {
-                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
-                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
+      for(int i=0; i < tableroPiezas.getPiezas().size(); i++)
+      {
+        
+        tableroPiezas.getPiezas().get(i).setArrastrar(false);
+        
+        //RELACION DEL DROP -----------------
+          for(int j=0; j < diagrama.getPiezas().size(); j++)
+          {
+              
+             if(tableroPiezas.getPiezas().get(i).isRastreado() && diagrama.getPiezas().get(j).isRastreado(diagrama.getX(), diagrama.getY(),0,0)
+             && diagrama.getPiezas().get(j).isActivo() == false)
+              {
+                  tableroPiezas.getPiezas().get(i).setXY((diagrama.getPiezas().get(j).getX() + diagrama.getX()), (diagrama.getPiezas().get(j).getY() + diagrama.getY()));
+                  tableroPiezas.getPiezas().get(i).setPosicionado(true);
+                  
+                  if(j == 0) {
+                    tableroPiezas.getPiezas().get(i).setCorrecta(tableroPiezas.getPiezas().get(i).isClase() == diagrama.getPiezas().get(j).isClase());
+                  }
+                  else if(j > 0 && j <= 4 ) {
+                    tableroPiezas.getPiezas().get(i).setCorrecta(tableroPiezas.getPiezas().get(i).isObjeto() == diagrama.getPiezas().get(j).isObjeto());
+                  }
+                  else {
+                    tableroPiezas.getPiezas().get(i).setCorrecta(tableroPiezas.getPiezas().get(i).isAtributo() == diagrama.getPiezas().get(j).isAtributo());
+                  }
+                  
+                  diagrama.getPiezas().get(j).setActivo(true);
+                  tableroPiezas.getPiezas().get(i).setPosicion(j);
+                  tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
+                  tableroPiezas.getPiezas().get(i).ejecutarSonido();
+                  break;
+              }
+              else if(tableroPiezas.getPiezas().get(i).isRastreado()) 
+              {
+                 if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
                  {
-                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
-                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
-                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
-                   println("pieza no ... "+i);
-                   //break;
+                   if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
+                   {
+                     //LIMPIA LA POSICION AL DAR CLICK SOBRE SI MISMO O AL ARRASTRARLO A UN AREA NO VALIDA ----
+                     tableroPiezas.getPiezas().get(i).setPosicionado(false);
+                     tableroPiezas.getPiezas().get(i).setCorrecta(false);
+                     diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
+                     tableroPiezas.getPiezas().get(i).setPosicion(-1);
+                     //------------------------------------------------------------------------------------
+                     break;
+                   }
                  }
-               }
-            }*/
-            
-      tableroPiezas.getPiezas().get(i).setArrastrar(false);
-      
-      
-            
-      //RELACION DEL DROP -----------------
-        for(int j=0; j < diagrama.getPiezas().size(); j++)
-        {
-            
-           if(tableroPiezas.getPiezas().get(i).isRastreado() && diagrama.getPiezas().get(j).isRastreado(diagrama.getX(), diagrama.getY(),0,0)
-           //&& diagrama.getPiezas().get(j).isActivo() == false)
-          && tableroPiezas.getPiezas().get(i).isPosicionado() == false) 
-            {
-              tableroPiezas.getPiezas().get(i).setXY((diagrama.getPiezas().get(j).getX() + diagrama.getX()), (diagrama.getPiezas().get(j).getY() + diagrama.getY()));
-              tableroPiezas.getPiezas().get(i).setPosicionado(true);
-              diagrama.getPiezas().get(j).setActivo(true);
-              tableroPiezas.getPiezas().get(i).setPosicion(j);
-              tableroPiezas.getPiezas().get(i).cargarSonido(applet,"arrastrar.wav");
-              tableroPiezas.getPiezas().get(i).ejecutarSonido();
-              println("pieza ... "+i);
-              break;
-            }/*
-            else if(tableroPiezas.getPiezas().get(i).isRastreado()) 
-            {
-               if(tableroPiezas.getPiezas().get(i).getPosicion() >= 0)
-               {
-                 //if(diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).isActivo() == true)
-                 if(tableroPiezas.getPiezas().get(i).isPosicionado() == true)
-                 {
-                   tableroPiezas.getPiezas().get(i).setPosicionado(false);
-                   diagrama.getPiezas().get(tableroPiezas.getPiezas().get(i).getPosicion()).setActivo(false);
-                   tableroPiezas.getPiezas().get(i).setPosicion(-1);
-                   println("pieza no ... "+i);
-                   //break;
-                 }
-               }
-            }*/
-       }
-       //---------------------------------------
+              }
+         }
+         //---------------------------------------
+      }
     }
     
     sonido = true;

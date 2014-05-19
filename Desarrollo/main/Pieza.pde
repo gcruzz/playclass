@@ -3,14 +3,50 @@ public class Pieza extends Elemento
     private boolean arrastrar;
     private boolean posicionado;
     private int posicion = -1;
+    //variable para validacion diagrama correcto
+    private int tipoPieza;
+    //posicion correcta
+    private boolean correcta;
     
-    public Pieza(String nombre, String urlPieza)
+    public Pieza(int tipoPieza)
+    {
+        super();
+        this.tipoPieza = tipoPieza;
+    }
+    
+    public boolean isClase()
+    {
+       return (tipoPieza == Parametros.CLASE); 
+    }
+    
+    public boolean isObjeto()
+    {
+       return (tipoPieza == Parametros.OBJETO); 
+    }
+    
+    public boolean isAtributo()
+    {
+       return (tipoPieza == Parametros.ATRIBUTO); 
+    }
+    
+    public Pieza(String nombre, String urlPieza, int tipoPieza)
     {
         super(nombre,true);
         setMostrarNombre(true);
         setUrlFigura(urlPieza);
         setFiguraEfecto(loadImage(urlPieza));
         sizeFigura(Parametros.tamPzAncho, Parametros.tamPzAlto);
+        this.tipoPieza = tipoPieza;
+    }
+    
+    public void setCorrecta(boolean correcta)
+    {
+      this.correcta = correcta;
+    }
+    
+    public boolean isCorrecta()
+    {
+      return correcta;
     }
     
     public void setArrastrar(boolean arrastrar)

@@ -28,4 +28,8 @@ public class Parametros {
    //PANTALLA PRINCIPAL
    public static final int ANCHO = 1200;
    public static final int ALTO = 620;
+   //TIPOS DE PIEZAS
+   public static final int CLASE = 1;
+   public static final int OBJETO = 2;
+   public static final int ATRIBUTO = 3;
 }
