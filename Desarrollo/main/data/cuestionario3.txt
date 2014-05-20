@@ -1,5 +1,5 @@
 ﻿Los elementos que se muestan en la pizarra corresponden a: \Animales vertebrados\celulas eucariotas\*Frutas\Insumos de oficina
-Una caracteristica comun a todos los elementos que se muestran en la pizarra es: \*Todos los elementos estan inscritos en una circunferencia\La forma es comun para todos\Todas las frutas son acidas\Ninguna de las frutas se da en Colombia
+Una caracteristica comun a todos los elementos que se muestran en la pizarra es: \*Los elementos estan inscritos en una circunferencia\La forma es comun para todos\Todas las frutas son acidas\Ninguna de las frutas se da en Colombia
 La cantidad de elementos que hay en la categoria seleccionada es: \1\*4\3\5
 Los elementos que se ven en la pizarra, en cuanto a sabor son: \Acidos\Amargos\Salados\*Dulces
 Los elementos que se muestran en la pizarra son principalmente aptos para preparar: \Sopas\*Postres\Cazuelas\Arroz

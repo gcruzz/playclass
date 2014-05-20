@@ -10,6 +10,8 @@ public class ExplicacionScreen extends Screen {
   //VARIABLE PARA MANEJAR SONIDO PIEZAS AL DRAG Y DROG
   boolean sonido = true;
   boolean termino;
+  Boton botonArmarRelacion;
+  boolean cargue;
   
   public ExplicacionScreen(PApplet applet){
       this.applet = applet;
@@ -19,6 +21,7 @@ public class ExplicacionScreen extends Screen {
       logo.sizeFigura(220, 50);
       
       botonSalir=new Boton("Salir");
+      botonArmarRelacion=new Boton("Armar Relación",20);
       
       diagrama = new Diagrama("diagramarelacion.png");
       diagrama.setXY((Parametros.ANCHO/2),68);
@@ -27,6 +30,13 @@ public class ExplicacionScreen extends Screen {
   }
   
   void drawImage(){
+    
+    if(!cargue)
+    {
+      tableroPiezas.llenarPiezas(getAnimationControl().getCatgSeleccionada().getTipoCategoria());
+      cargue = true;
+    }
+    
     moverTodo();
     
     if(!diagrama.diagramaLleno())
@@ -54,6 +64,11 @@ public class ExplicacionScreen extends Screen {
           break;
         }
       }
+    }
+    else if(!tableroPiezas.validarCorrectas())
+    {
+      botonArmarRelacion.ubicarXY(( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO )+100,(Parametros.ALTO/2));
+      botonArmarRelacion.isRastreado(applet,true);
     }
     
     //SI TERMINO DE LLENAR EL DIAGRAMA
@@ -135,6 +150,7 @@ public class ExplicacionScreen extends Screen {
     tableroPiezas.resetValListaPieza();
     diagrama.resetValDiagrama();
     termino = false;
+    cargue = false;
   }
   
   void mousePressed() { 
@@ -162,6 +178,18 @@ public class ExplicacionScreen extends Screen {
           break;
         }
       }
+    }
+    else if(!tableroPiezas.validarCorrectas())
+    {
+        //BOTON ARMAR RELACION
+        if(botonArmarRelacion.isRastreado())
+        {
+          background(255);
+          //getAnimationControl().setCurrentScreen(2);
+          botonArmarRelacion.cargarSonido(applet,"seleccionarCategoria.wav");
+          botonArmarRelacion.ejecutarSonido();
+          //clearExit();
+        }
     }
     
   }

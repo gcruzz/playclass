@@ -20,6 +20,8 @@ public class Elemento
    private boolean activo;
    private int _x;
    private int _y;
+   private boolean colorTexto;
+   private boolean minuscula;
     
     public Elemento()
     {
@@ -48,6 +50,16 @@ public class Elemento
         this.modoBoton = modoBoton;
     }
     
+    public void setMinuscula(boolean minuscula)
+    {
+      this.minuscula = minuscula;
+    }
+    
+    public boolean isMinuscula()
+    {
+      return minuscula;
+    }
+    
     public void setActivo(boolean activo)
     {
       this.activo = activo;
@@ -56,6 +68,16 @@ public class Elemento
     public boolean isActivo()
     {
       return activo;
+    }
+    
+    public void setColorTexto(boolean colorTexto)
+    {
+      this.colorTexto = colorTexto;
+    }
+    
+    public boolean isColorTexto()
+    {
+      return colorTexto;
     }
     
     public void setMostrarNombre(boolean mostrarNombre)
@@ -477,10 +499,46 @@ public class Elemento
               text(nombre + (frameCount/10 % 2 == 0 ? "_" : ""), ubicacionX + (figAncho / 2), ubicacionY + figAlto + 30);
             }
           }
-          else
+          else if(!colorTexto)
           {
-            text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-3);
-          }   
+              text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-3);
+          }
+          //Redefine el tamaño de letra y color del texto del boton pieza
+          else
+          {   
+              PFont fontEstilo = createFont("Comic Sans MS", 10);
+              fill(255,255,255);
+              textFont(fontEstilo);
+              
+              if(!minuscula)
+              {
+                nombre = nombre.toUpperCase();
+              }
+              
+              //una linea
+              if(nombre.split("\n").length == 1)
+              {
+                text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-1);
+              }
+              
+              //dos lineas
+              if(nombre.split("\n").length == 2)
+              {
+                text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-7);
+              }
+              
+              //tres lineas
+              if(nombre.split("\n").length == 3)
+              {
+                text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-16);
+              }
+              
+              //cuatro lineas
+              if(nombre.split("\n").length == 4)
+              {
+                text(nombre, ubicacionX + (figAncho / 2), ubicacionY + (figAlto/2)-24);
+              }
+          }
         }
         else
         {

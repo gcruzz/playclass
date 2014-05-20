@@ -14,6 +14,28 @@ public class Pieza extends Elemento
         this.tipoPieza = tipoPieza;
     }
     
+    public Pieza(String nombre, String urlPieza, int tipoPieza)
+    {
+        super(nombre,true);
+        setMostrarNombre(true);
+        setUrlFigura(urlPieza);
+        setFiguraEfecto(loadImage(urlPieza));
+        sizeFigura(Parametros.tamPzAncho, Parametros.tamPzAlto);
+        this.tipoPieza = tipoPieza;
+        
+        switch(this.tipoPieza)
+        {
+           case Parametros.ATRIBUTO:
+               setMinuscula(true);
+           break;
+           default:
+               setMinuscula(false);
+           break;
+        }
+        
+        setColorTexto(true);
+    }
+    
     public boolean isClase()
     {
        return (tipoPieza == Parametros.CLASE); 
@@ -27,16 +49,6 @@ public class Pieza extends Elemento
     public boolean isAtributo()
     {
        return (tipoPieza == Parametros.ATRIBUTO); 
-    }
-    
-    public Pieza(String nombre, String urlPieza, int tipoPieza)
-    {
-        super(nombre,true);
-        setMostrarNombre(true);
-        setUrlFigura(urlPieza);
-        setFiguraEfecto(loadImage(urlPieza));
-        sizeFigura(Parametros.tamPzAncho, Parametros.tamPzAlto);
-        this.tipoPieza = tipoPieza;
     }
     
     public void setCorrecta(boolean correcta)
