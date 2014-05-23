@@ -21,7 +21,7 @@ public class ExplicacionScreen extends Screen {
       logo.sizeFigura(220, 50);
       
       botonSalir=new Boton("Salir");
-      botonArmarRelacion=new Boton("Armar Relación",20);
+      botonArmarRelacion=new Boton("Solucionar",20);
       
       diagrama = new Diagrama("diagramarelacion.png");
       diagrama.setXY((Parametros.ANCHO/2),68);
@@ -76,19 +76,14 @@ public class ExplicacionScreen extends Screen {
     {
       if(diagrama.diagramaLleno())
       {
-         if(tableroPiezas.validarCorrectas())
-         {
-             println("UBICADAS CORRECTAMENTE");
-         }
-         else
-         {
-             println("ERROR EN EL DIAGRAMA");
-         }
          diagrama.cargarSonido(applet, "juegoCompleto.wav");
          diagrama.ejecutarSonido();
          termino = true;
       }
     }
+    
+    finJuego();
+    fallo();
   }  
   
   void moverTodo()
@@ -114,6 +109,36 @@ public class ExplicacionScreen extends Screen {
     textFont(font);
     textAlign(CENTER);
     text("ARMAR LA RELACIÓN", Parametros.ANCHO / 2, 70);
+  }
+  
+  private void finJuego()
+  {
+    if(diagrama.diagramaLleno())
+      {
+         if(tableroPiezas.validarCorrectas())
+         {
+          font = createFont("Comic Sans MS", 20);
+          fill(0);
+          textFont(font);
+          textAlign(BASELINE);
+          text("FIN DEL JUEGO", ( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO )+100,(Parametros.ALTO/2));
+         }
+      }
+  }
+  
+  private void fallo()
+  {
+    if(diagrama.diagramaLleno())
+      {
+         if(!tableroPiezas.validarCorrectas())
+         {
+          font = createFont("Comic Sans MS", 20);
+          fill(0);
+          textFont(font);
+          textAlign(BASELINE);
+          text("¡ HAS FALLADO !", ( (Parametros.ANCHO + (diagrama.getFigAncho() / 2)) - Parametros.ANCHO )+100,(Parametros.ALTO/2)-30);
+         }
+      }
   }
   
   void draw(){
