@@ -85,9 +85,17 @@ public class Categoria extends Elemento
       if(objetos.isEmpty())
       {
         objetos = listSacados;
-        listSacados = new ArrayList<Objeto>();
         Collections.shuffle(objetos);
       }
+      else if(!listSacados.isEmpty())
+      {
+          for(int i=0; i < listSacados.size(); i++)
+          {
+            objetos.add(listSacados.get(i));
+          }
+      }
+      
+      listSacados = new ArrayList<Objeto>();
     }
     
     public int getTipoCategoria()
