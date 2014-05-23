@@ -185,10 +185,9 @@ public class ExplicacionScreen extends Screen {
         if(botonArmarRelacion.isRastreado())
         {
           background(255);
-          //getAnimationControl().setCurrentScreen(2);
           botonArmarRelacion.cargarSonido(applet,"seleccionarCategoria.wav");
           botonArmarRelacion.ejecutarSonido();
-          //clearExit();
+          diagrama.armarRelacion(tableroPiezas.getPiezas());
         }
     }
     

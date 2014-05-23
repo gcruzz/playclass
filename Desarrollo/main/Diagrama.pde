@@ -3,6 +3,10 @@ public class Diagrama extends Elemento
   private ArrayList<Pieza> piezas;
   private Pieza elemento;
   
+  private int clase = 0;
+  private int objeto = 1;
+  private int atributo = 5;
+  
     public Diagrama(String urlFigura)
     {
       super(urlFigura);
@@ -111,5 +115,39 @@ public class Diagrama extends Elemento
        {
           piezas.get(i).setActivo(false);
        }
+    }
+    
+    public void armarRelacion(ArrayList<Pieza> figuras)
+    {
+        int cl = clase;
+        int ob = objeto;
+        int at = atributo;
+        
+        for(int i=0; i < figuras.size(); i++)
+        {
+            if(figuras.get(i).isClase())
+            {
+               figuras.get(i).setXY((piezas.get(cl).getX() + (Parametros.ANCHO/2)), (piezas.get(cl).getY() + 68));
+               piezas.get(cl).setActivo(true);
+               figuras.get(i).setPosicion(cl);
+            }
+            else if(figuras.get(i).isObjeto())
+            {
+               figuras.get(i).setXY((piezas.get(ob).getX() + (Parametros.ANCHO/2)), (piezas.get(ob).getY() + 68));                      
+               piezas.get(ob).setActivo(true);
+               figuras.get(i).setPosicion(ob);
+               ob++;
+            }
+            else 
+            {
+               figuras.get(i).setXY((piezas.get(at).getX() + (Parametros.ANCHO/2)), (piezas.get(at).getY() + 68));
+               piezas.get(at).setActivo(true);
+               figuras.get(i).setPosicion(at);
+               at++;
+            }
+                  
+             figuras.get(i).setCorrecta(true);
+             figuras.get(i).setPosicionado(true);
+        }
     }
 }
