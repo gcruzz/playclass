@@ -2,6 +2,7 @@ public class Elemento
 {
    private String nombre;
    private PImage figura;
+   private PImage figura2;
    private PImage figuraEfecto;
    private int ubicacionX;
    private int ubicacionY;
@@ -119,9 +120,27 @@ public class Elemento
        }
     }
     
+    public void setUrlFigura2(String urlFigura2)
+    {
+       if(figura2 == null)
+       {
+          this.figura2 = loadImage(urlFigura2);
+       }
+    }
+    
     public void setFiguraEfecto(PImage figuraEfecto)
     {
         this.figuraEfecto = figuraEfecto;
+    }
+    
+    public void setFigura2(PImage figura2)
+    {
+        this.figura2 = figura2;
+    }
+    
+    public PImage getFigura2()
+    {
+      return figura2;
     }
     
     public PImage getFigura()
@@ -175,6 +194,28 @@ public class Elemento
         image(figura, ubicacionX, ubicacionY, figAncho, figAlto);
       }
       
+      displayNombre();
+    }
+    
+    public void ubicarXY(int x,int y, boolean direccion)
+    {
+      ubicacionX = x;
+      ubicacionY = y;
+      
+      if(!direccion)
+      {
+        if(figura != null)
+        {
+          image(figura, ubicacionX, ubicacionY, figAncho, figAlto);
+        }
+      }
+      else
+      {
+        if(figura2 != null)
+        {
+          image(figura2, ubicacionX, ubicacionY, figAncho, figAlto);
+        }
+      }
       displayNombre();
     }
     

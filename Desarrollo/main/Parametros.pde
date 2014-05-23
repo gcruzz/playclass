@@ -1,4 +1,7 @@
 public class Parametros {
+  //ROBOT
+   public static final int tamRobotAncho = 120;
+   public static final int tamRobotAlto = 135;
   //DIAGRAMA
    public static final int tamDgrAncho = 380;
    public static final int tamDgrAlto = 450;
